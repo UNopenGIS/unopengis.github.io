@@ -1,0 +1,904 @@
+<!DOCTYPE html>
+<!-- saved from url=(0056)http://unopengis.org/unopengis/resources/resources00.php -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		
+<title>UN Open GIS</title>
+<meta name="author" content="UN Open GIS"><!-- 사이트 저작자 표시 -->
+<meta name="keywords" content="UN Open GIS, Home, About Us, What We Do, Resources, News and Media, Call for Participation"><!-- 검색 엔진을 위한 키워드 -->
+<meta name="description" content="UN Open GIS"><!-- 사이트에 대한 설명 -->
+
+
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0, user-scalable=no">
+<!-- <meta name="viewport" content="width=1280, user-scalable=yes, target-densitydpi=device-dpi"> -->
+
+<!-- IE 호환모드 설정(인터넷 익스플로러가 항상 최신 버전의 레이아웃 엔진을 사용하여 문서를 렌더링하도록 지정) -->
+<!--[if lt IE 9]>
+    <script src="../js/css-support.js"></script>
+<![endif]-->
+
+<!-- ie8 이하에서 html5 시멘틱 태그와,  css3 선택자 일부 지원, 미디어쿼리 지원 -->  
+<!--[if lt IE 9]>
+    <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>	
+    <script src="http://ie7-js.googlecode.com/svn/version/2.1(beta4)/IE9.js"></script>
+    <script src="http://css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js"></script>
+<![endif]-->
+<link href="./resources_files/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+<link rel="stylesheet" href="./resources_files/reset.css">
+<link rel="stylesheet" href="./resources_files/layout.css">
+<link rel="stylesheet" href="./resources_files/sub.css">
+<link rel="stylesheet" href="./resources_files/layerPopup.css">
+<link rel="stylesheet" href="./resources_files/style.css">
+
+<script src="./resources_files/jquery-1.11.3.min.js.download"></script>
+<script src="./resources_files/jquery-ui.min.js.download"></script>
+<script src="./resources_files/myfunc.js.download"></script>
+<script src="./resources_files/main.js.download"></script>
+<script src="./resources_files/jquery.bxslider.js.download"></script> <!-- bx 슬라이더 js -->
+<script src="./resources_files/layerPopup.js.download"></script>
+
+<script language="JavaScript">
+<!--
+var driver  = 'MYSQL';
+var baseDir = '../../sboard/';
+var fpWin   = null;
+
+// browser Check
+var is = null;
+function BrowserCheck() {
+	this.ie  = ( document.all ) ? 1 : 0;
+	this.ns  = document.getElementById && !document.all ? 1 : 0;
+}
+is = new BrowserCheck();
+
+function getObject( objStr, tier ) {
+	var docStr = "";
+	var obj	= null;
+	if ( typeof(tier) == "string" ) docStr = tier + "." + "document";
+	else docStr = "document";
+	if (is.ie) {
+		obj = eval( docStr + ".all['" + objStr + "']"); // IE
+	}else if ( is.ns ){
+		obj = eval( docStr + ".getElementById('" + objStr + "');"); // NS
+		if(!obj){
+			obj = eval( docStr + ".getElementsByName('" + objStr + "')[0];"); // NS
+		}
+	}
+	return obj;
+}
+
+function getOnlyURL(_url) {
+	var url = _url;
+	var e = url.indexOf ( '?' );
+	if ( e > 0 ) url = url.substring(0,e);
+	return url;
+}
+//-->
+</script>
+<script language="JavaScript">
+<!--
+var poll_id = '';
+var poll_exec = '';
+
+// sucMode : '1' : 로그인 성공 메시지 출력
+//			 '2' : 로그인후 윈도우 닫기
+//			 '3' : 로그 아웃 스킨 표시 ( 기본 값 )
+function loginPopup ( skinName, width, height, left, top, scroll_yn, sucMode, successURL, message ) {
+	var url = '';
+	var bDir = '';
+	if ( typeof(baseDir   ) != 'undefined' ) bDir = baseDir;
+	if ( typeof(skinName  ) == 'undefined' ) skinName = '';
+	if ( typeof(sucMode   ) == 'undefined' ) sucMode = '1';
+	if ( typeof(successURL) == 'undefined' ) successURL = '';
+	if ( typeof(message   ) == 'undefined' ) message = '';
+
+	url = bDir + 'dlogin.php?login_skin_name=' + skinName + '&suc_mode=' + sucMode;
+	if ( typeof(id      ) != 'undefined' ) url += '&id=' + id;
+	if ( typeof(poll_id ) != 'undefined' ) url += '&poll_id=' + poll_id;
+
+	if ( successURL != '') url += '&succ_url='+ encodeURI (successURL);
+	if ( message	!= '') url += '&message=' + encodeURI (message   );
+	url += '&lg=Y';
+	var loginWin = window.open(url,'loginWin','toolbar=no,menubar=no,resizable=no,scrollbars=' + scroll_yn + ',left=' + left + ',top=' + top + ',width=' + width + ',height=' + height );
+	loginWin.focus();
+}
+// skinName : 스킨명
+// successURL : 성공시 이동할 경로명
+function loginPage ( skinName, successURL ) {
+	var url = '';
+	var bDir = '';
+	if ( typeof(baseDir   ) != 'undefined' ) bDir = baseDir;
+	if ( typeof(skinName  ) == 'undefined' ) skinName = '';
+	if ( typeof(successURL) == 'undefined' ) successURL= '';
+	url = bDir + 'dlogin.php?login_skin_name=' + skinName +  '&suc_mode=4'  + '&succ_url='  + escape (successURL);
+	var loginWin = document.location.href = url;
+	loginWin.focus();
+}
+
+function loginFormSubmit(myForm) {
+	var url ='';
+	if ( typeof(baseDir) != 'undefined' ) url = baseDir + 'login_ok.php';
+	else url = 'login_ok.php';
+
+	var first = true;
+	var suc_mode = '';
+	if ( typeof ( myForm.suc_mode ) != 'undefined' ) {
+		suc_mode = myForm.suc_mode.value;
+		if ( suc_mode != '' ) { url += '?suc_mode=' + suc_mode; first = false; }
+	}
+
+	url += getLoginUrl (first);
+	if ( typeof ( myForm.message  ) != 'undefined' ) myForm.message.value  = decodeURI ( myForm.message.value );
+	if ( typeof ( myForm.succ_url ) != 'undefined' ) myForm.succ_url.value = decodeURI ( myForm.succ_url.value);
+
+	myForm.action = url;
+
+	if ( myForm.user_id.value  == '' ) { alert ("ID를 입력해주세요."); myForm.user_id.focus(); return false; }
+	if ( myForm.password.value == '' ) { alert ("Password를 입력해주세요."); myForm.password.focus(); return false; }
+	return true;
+}
+
+function logout(myForm) {
+	var formMode = 1;
+	if ( typeof(myForm) == 'undefined' ) {
+		myForm = document.logoutForm;
+		formMode = 2;
+	}
+	var url ='';
+	if ( typeof(baseDir) != 'undefined' ) url = baseDir + 'logout_ok.php';
+	else url = 'logout_ok.php';
+	url += getLoginUrl (true);
+	if ( typeof ( myForm.message  ) != 'undefined' ) myForm.message.value  = encodeURI ( myForm.message.value  );
+	if ( typeof ( myForm.succ_url ) != 'undefined' ) myForm.succ_url.value = encodeURI ( myForm.succ_url.value );
+
+	myForm.action = url;
+
+	if ( formMode == 1 ) return true;
+	else myForm.submit();
+}
+
+function getLoginUrl (first) {
+	var url = '';
+	if ( typeof(id   ) != 'undefined' && id   != '' ) if ( first ) { url += '?id='   + id  ; first = false;} else { url += '&id='   + id  ; }
+	if ( typeof(npop ) != 'undefined' && npop != '' ) if ( first ) { url += '?npop=' + npop; first = false;} else { url += '&npop=' + npop; }
+	if ( typeof(exec ) != 'undefined' && exec != '' ) if ( first ) { url += '?exec=' + exec; first = false;} else { url += '&exec=' + exec; }
+	if ( typeof(no   ) != 'undefined' && no	  != '' ) if ( first ) { url += '?no='   + no  ; first = false;} else { url += '&no='   + no  ; }
+	if ( typeof(s    ) != 'undefined' && s    != '' ) if ( first ) { url += '?s='    + s   ; first = false;} else { url += '&s='    + s   ; }
+
+	if ( typeof(poll_id  ) != 'undefined' && poll_id  != '' ) if ( first ) { url += '?poll_id='  + poll_id  ; first = false; } else { url += '&poll_id='  + poll_id  ; }
+	if ( typeof(poll_exec) != 'undefined' && poll_exec!= '' ) if ( first ) { url += '?poll_exec='+ poll_exec; first = false; } else { url += '&poll_exec='+ poll_exec; }
+	return url;
+}
+
+function comfirmClick(argu1) {
+	if ( typeof(opener	 ) != 'undefined' && typeof(opener.document) == 'object' ) {
+		if ( argu1 == '' ) {
+			opener.focus();
+			self.close();
+		} else {
+			document.location.replace(argu1);
+		}
+	} else {
+		if ( argu1 == '' ) document.location.replace('/');
+		else document.location.replace(argu1);
+	}
+}
+var memberWin = null;
+// mode : '1' : 팝업에서   회원 가입 페이지 열기
+//        '2' : 현재창에서 회원 가입 페이지 열기
+// successURL : 가입 성공시 이동 페이지
+// width      : 팝업 윈도우 가로 크기
+// height     : 팝업 윈도우 세로 크기
+// scroll     : 팝업 윈도우 스크롤바 생성 여부 ( 'Y', 'N' )
+function openMemberCB (gubun, mode, successURL, width, height, scroll, user_id) {
+	if ( typeof(successURL) == 'undefined' ) successURL = '' ;
+	if ( memberWin != null ) memberWin.close();
+	var url = '';
+	if ( typeof(baseDir) != 'undefined' ) url = baseDir;
+
+	if      ( gubun == 'insert'      ) url += 'member_register.php';
+	else if ( gubun == 'update'      ) url += 'member_register.php';
+	else if ( gubun == 'secession'   ) url += 'member_secession.php';
+	else if ( gubun == 'infor_search') url += 'member_infor_search.php';
+	else if ( gubun == 'view'        ) url += 'member_view.php';
+
+	if ( typeof(id) == 'undefined' ) {
+		if ( successURL != '' ) {
+			url += '?succ_url=' + escape (successURL);
+			if      ( gubun == 'update'      ) url += '&mexec=update';
+			else if ( gubun == 'secession'   ) url += '&mode=' + mode;
+			else if ( gubun == 'infor_search') url += '&mode=' + mode;
+			else if ( gubun == 'view'        ) url += '&user_id=' + user_id;
+		} else {
+			if      ( gubun == 'update'      ) url += '?mexec=update';
+			else if ( gubun == 'secession'   ) url += '?mode=' + mode;
+			else if ( gubun == 'infor_search') url += '?mode=' + mode;
+			else if ( gubun == 'view'        ) url += '?user_id=' + user_id;
+		}
+	} else {
+		if ( successURL != '' ) {
+			url += '?id=' + id + '&succ_url=' + escape (successURL);
+		} else {
+			url += '?id=' + id;
+		}
+		if      ( gubun == 'update'      ) url += '&mexec=update';
+		else if ( gubun == 'secession'   ) url += '&mode=' + mode;
+		else if ( gubun == 'infor_search') url += '&mode=' + mode;
+		else if ( gubun == 'view'        ) url += '&user_id=' + user_id;
+	}
+
+	if ( mode == '1' ) {
+        scroll = ( scroll == 'Y' ) ? "yes" : "no";
+		var target = '';
+		if      ( gubun == 'insert'      ) target += 'memberWin';
+		else if ( gubun == 'update'      ) target += 'memberWin';
+		else if ( gubun == 'secession'   ) target += 'secessWin';
+		else if ( gubun == 'infor_search') target += 'inforsWin';
+		memberWin = window.open(url, target,'toolbar=no,menubar=no,resizable=no,scrollbars=' + scroll + ',width=' + width + ',height=' + height );
+		memberWin.focus();
+	} else if ( mode == '2' ) {
+		document.location.href = url;
+	}
+}
+
+function openMemberRegister (mode, successURL, width, height, scroll) {
+	if ( typeof(mode) == 'undefined' || mode == '' ) mode = '1';
+	if ( mode == '1' ) {
+		if ( typeof(width ) == 'undefined' || width  == '' ) width  = member_register_popup_width;
+		if ( typeof(height) == 'undefined' || height == '' ) height = member_register_popup_height;
+		if ( typeof(scroll) == 'undefined' || scroll == '' ) scroll = 'Y';
+	}
+	openMemberCB ('insert',mode, successURL, width, height, scroll);
+}
+
+function openMemberUpdate (mode, successURL, width, height, scroll ) {
+	if ( typeof(mode) == 'undefined' || mode == '' ) mode = '1';
+	if ( mode == '1' ) {
+		if ( typeof(width ) == 'undefined' || width  == '' ) width  = member_update_popup_width;
+		if ( typeof(height) == 'undefined' || height == '' ) height = member_update_popup_height;
+		if ( typeof(scroll) == 'undefined' || scroll == '' ) scroll = 'Y';
+	}
+	openMemberCB ('update',mode, successURL, width, height, scroll);
+}
+
+function openMemberSecession(mode, successURL, width, height, scroll) {
+	if ( typeof(mode) == 'undefined' || mode == '' ) mode = '1';
+	if ( mode == '1' ) {
+		if ( typeof(width ) == 'undefined' || width  == '' ) width  = member_secession_popup_width;
+		if ( typeof(height) == 'undefined' || height == '' ) height = member_secession_popup_height;
+		if ( typeof(scroll) == 'undefined' || scroll == '' ) scroll = 'Y';
+	}
+	openMemberCB ('secession',mode, successURL, width, height, scroll);
+}
+
+function openMemberInforSearch(mode, successURL, width, height, scroll) {
+	if ( typeof(mode) == 'undefined' || mode == '' ) mode = '1';
+	if ( mode == '1' ) {
+		if ( typeof(width ) == 'undefined' || width  == '' ) width  = member_infor_search_popup_width;
+		if ( typeof(height) == 'undefined' || height == '' ) height = member_infor_search_popup_height;
+		if ( typeof(scroll) == 'undefined' || scroll == '' ) scroll = 'Y';
+	}
+	openMemberCB ('infor_search',mode, successURL, width, height, scroll);
+}
+
+function openMemberView (user_id, mode, successURL, width, height, scroll ) {
+	if ( typeof(mode) == 'undefined' || mode == '' ) mode = '1';
+	if ( mode == '1' ) {
+		if ( typeof(width ) == 'undefined' || width  == '' ) width  = member_view_popup_width;
+		if ( typeof(height) == 'undefined' || height == '' ) height = member_view_popup_height;
+		if ( typeof(scroll) == 'undefined' || scroll == '' ) scroll = 'Y';
+	}
+	openMemberCB ('view',mode, successURL, width, height, scroll, user_id);
+}
+//-->
+</script>
+		<link rel="stylesheet" href="./resources_files/main.css">
+	</head>
+	<body data-new-gr-c-s-check-loaded="14.1190.0" data-gr-ext-installed=""><iframe name="ajaxTarget" id="ajaxTarget" frameborder="0" src="./resources_files/saved_resource.html"></iframe><div id="blackWrap"></div><div id="layerPopupWrap"><div id="layerPopup" class="ui-draggable ui-draggable-handle"></div></div>
+		<section id="wrap">
+			<div class="reset">
+<header id="header">
+	<article class="head-wrap">
+		<article class="head-con">
+			<article class="head-t-nav">
+				<article class="head-t-in w1140">
+					<a href="https://operationalsupport.un.org/en/partnership-initiatives" target="_blank">Welcome to Partnership Initiatives of United Nations Department of Operational Support</a>
+				</article>
+			</article>
+			<article class="head-topbar"></article>
+			<article class="head-in pcV">
+				<article class="head-top">
+					<article class="head-top-in w1140 clear">
+						<article class="left">
+							<a href="http://unopengis.org/unopengis/main/main.php">
+								<img src="./resources_files/logo.png" alt="UN Open GIS 로고">
+							</a>
+						</article>
+						<article class="right">
+							<a href="http://unopengis.org/unopengis/main/main.php">Home</a>
+														<span>·</span>
+							<a href="http://unopengis.org/sboard/logout_ok.php">LOGOUT</a>
+							<span>·</span>
+							<a href="http://unopengis.org/unopengis/member/mypage.php">MYPAGE</a>
+													</article>
+					</article>
+				</article>
+				<article class="head-depth-wrap">
+					<article class="head-depth w1140">
+						<ul class="depth01 clear">
+														<li>
+								<a href="http://unopengis.org/unopengis/about/about01.php" data-fullname="">Overview</a>
+																<ul class="depth02" style="">
+																		<li>
+										<a href="http://unopengis.org/unopengis/about/about01_01.php" data-fullname="">About Us</a>
+									</li>
+																		<li>
+										<a href="http://unopengis.org/unopengis/about/about01_02.php" data-fullname="">Governance Structure</a>
+									</li>
+																		<li>
+										<a href="http://unopengis.org/unopengis/about/about05.php" data-fullname="">Members</a>
+									</li>
+																		<li>
+										<a href="http://unopengis.org/unopengis/about/about01_03.php" data-fullname="">CI</a>
+									</li>
+																		<li>
+										<a href="http://unopengis.org/unopengis/about/about04.php" data-fullname="">Contact Us</a>
+									</li>
+																	</ul>
+															</li>
+														<li>
+								<a href="http://unopengis.org/unopengis/what/what00.php" data-fullname="" class="">What We Do</a>
+																<ul class="depth02" style="display: none; height: 188px; padding-top: 22px; margin-top: 0px; padding-bottom: 22px; margin-bottom: 0px;">
+																		<li>
+										<a href="http://unopengis.org/unopengis/what/what01.php" data-fullname="DWG 1: Hybrid GIS Platform">DWG 1: Hybrid GIS Platform</a>
+									</li>
+																		<li>
+										<a href="http://unopengis.org/unopengis/what/what02.php" data-fullname="">DWG 2: Capacity Building</a>
+									</li>
+																		<li>
+										<a href="http://unopengis.org/unopengis/what/what03.php" data-fullname="DWG 5: GEOAI and Geo-Analytics">DWG 5: GEOAI &amp; Analytics</a>
+									</li>
+																		<li>
+										<a href="http://unopengis.org/unopengis/what/what04.php" data-fullname="DWG 6: OpenDroneMap and 3D">DWG 6: OpenDroneMap &amp; 3D</a>
+									</li>
+																		<li>
+										<a href="http://unopengis.org/unopengis/what/what05.php" data-fullname="">DWG 7: Smart Maps</a>
+									</li>
+																	</ul>
+															</li>
+														<li>
+								<a href="http://unopengis.org/unopengis/best/best01.php" data-fullname="">Best Practices</a>
+															</li>
+														<li>
+								<a href="http://unopengis.org/unopengis/resources/resources00.php" data-fullname="">Resources</a>
+																<ul class="depth02" style="">
+																		<li>
+										<a href="http://unopengis.org/unopengis/resources/resources01.php" data-fullname="">SW Downloads</a>
+									</li>
+																		<li>
+										<a href="http://unopengis.org/unopengis/resources/resources02.php" data-fullname="">Source Codes</a>
+									</li>
+																		<li>
+										<a href="http://unopengis.org/unopengis/resources/resources03.php" data-fullname="">Documents</a>
+									</li>
+																	</ul>
+															</li>
+														<li>
+								<a href="http://unopengis.org/unopengis/news/news01.php" data-fullname="">News and Media</a>
+																<ul class="depth02" style="">
+																		<li>
+										<a href="http://unopengis.org/unopengis/news/news01.php" data-fullname="">News and Media</a>
+									</li>
+																		<li>
+										<a href="http://unopengis.org/unopengis/calendar/calendar.php" data-fullname="">Meeting Schedule</a>
+									</li>
+																		<li style="display: none;">
+										<a href="http://unopengis.org/unopengis/news/news.php" data-fullname="">News</a>
+									</li>
+																		<li>
+										<a href="http://unopengis.org/unopengis/resources/resources04.php" data-fullname="">Videos</a>
+									</li>
+																		<li>
+										<a href="http://unopengis.org/unopengis/photo/photo.php" data-fullname="">Photos</a>
+									</li>
+																	</ul>
+															</li>
+														<li>
+								<a href="http://unopengis.org/unopengis/call/call01.php" data-fullname="">Call for Participation</a>
+															</li>
+														<li style="display:none;">
+								<a href="http://unopengis.org/unopengis/member/login.php">Members</a>
+								<ul class="depth02" style="">
+									<li><a href="http://unopengis.org/unopengis/member/login.php">Login</a></li>
+									<li><a href="http://unopengis.org/unopengis/member/join.php">Join</a></li>
+									<li><a href="http://unopengis.org/unopengis/member/privacy.php">Privacy Notice</a></li>
+									<li><a href="http://unopengis.org/unopengis/member/terms.php"> Terms of Use</a></li>
+									<li><a href="http://unopengis.org/unopengis/member/copyright.php">Copyright</a></li>
+									<li><a href="http://unopengis.org/unopengis/member/mypage.php">Mypage</a></li>
+								</ul>
+							</li>
+						</ul>
+					</article>
+				</article>
+			</article>
+			<article class="m-head-in mV posR">
+				<article class="m-head-top">
+					<a href="http://unopengis.org/unopengis/main/main.php"><img src="./resources_files/logo.png" alt="UN Open GIS 로고"></a>
+				</article>
+				<article class="m-head-con clear">
+					<article class="left">
+						<a href="javascript:;">
+							<img src="./resources_files/m-depth-icon.png" alt="전체메뉴 아이콘">
+						</a>
+					</article>
+					<article class="right">
+						<a href="http://unopengis.org/unopengis/main/main.php">HOME</a>
+												<span>·</span>
+						<a href="http://unopengis.org/sboard/logout_ok.php">LOGOUT</a>
+						<span>·</span>
+						<a href="http://unopengis.org/unopengis/member/mypage.php">MYPAGE</a>
+											</article>
+				</article>
+				<article class="m-depth">
+					<article class="m-depth-in clear">
+						<ul class="m-depth01" style="height: 1539px;">
+							<li>
+								<a href="http://unopengis.org/unopengis/main/main.php">Home</a>
+							</li>
+														<li>
+								<a href="javascript:void(0);" data-fullname="">Overview</a>
+																<ul class="m-depth02">
+									<li><a href="http://unopengis.org/unopengis/about/about01.php" data-fullname="">Overview</a></li>
+																		<li><a href="http://unopengis.org/unopengis/about/about01_01.php" data-fullname="">About Us</a></li>
+																		<li><a href="http://unopengis.org/unopengis/about/about01_02.php" data-fullname="">Governance Structure</a></li>
+																		<li><a href="http://unopengis.org/unopengis/about/about05.php" data-fullname="">Members</a></li>
+																		<li><a href="http://unopengis.org/unopengis/about/about01_03.php" data-fullname="">CI</a></li>
+																		<li><a href="http://unopengis.org/unopengis/about/about04.php" data-fullname="">Contact Us</a></li>
+																	</ul>
+															</li>
+														<li>
+								<a href="javascript:void(0);" data-fullname="">What We Do</a>
+																<ul class="m-depth02">
+									<li><a href="http://unopengis.org/unopengis/what/what00.php" data-fullname="">What We Do</a></li>
+																		<li><a href="http://unopengis.org/unopengis/what/what01.php" data-fullname="DWG 1: Hybrid GIS Platform">DWG 1: Hybrid GIS Platform</a></li>
+																		<li><a href="http://unopengis.org/unopengis/what/what02.php" data-fullname="">DWG 2: Capacity Building</a></li>
+																		<li><a href="http://unopengis.org/unopengis/what/what03.php" data-fullname="DWG 5: GEOAI and Geo-Analytics">DWG 5: GEOAI &amp; Analytics</a></li>
+																		<li><a href="http://unopengis.org/unopengis/what/what04.php" data-fullname="DWG 6: OpenDroneMap and 3D">DWG 6: OpenDroneMap &amp; 3D</a></li>
+																		<li><a href="http://unopengis.org/unopengis/what/what05.php" data-fullname="">DWG 7: Smart Maps</a></li>
+																	</ul>
+															</li>
+														<li>
+								<a href="http://unopengis.org/unopengis/best/best01.php" data-fullname="">Best Practices</a>
+															</li>
+														<li>
+								<a href="javascript:void(0);" data-fullname="">Resources</a>
+																<ul class="m-depth02">
+									<li><a href="http://unopengis.org/unopengis/resources/resources00.php" data-fullname="">Resources</a></li>
+																		<li><a href="http://unopengis.org/unopengis/resources/resources01.php" data-fullname="">SW Downloads</a></li>
+																		<li><a href="http://unopengis.org/unopengis/resources/resources02.php" data-fullname="">Source Codes</a></li>
+																		<li><a href="http://unopengis.org/unopengis/resources/resources03.php" data-fullname="">Documents</a></li>
+																	</ul>
+															</li>
+														<li>
+								<a href="javascript:void(0);" data-fullname="">News and Media</a>
+																<ul class="m-depth02">
+									<li><a href="http://unopengis.org/unopengis/news/news01.php" data-fullname="">News and Media</a></li>
+																		<li><a href="http://unopengis.org/unopengis/news/news01.php" data-fullname="">News and Media</a></li>
+																		<li><a href="http://unopengis.org/unopengis/calendar/calendar.php" data-fullname="">Meeting Schedule</a></li>
+																		<li style="display: none;"><a href="http://unopengis.org/unopengis/news/news.php" data-fullname="">News</a></li>
+																		<li><a href="http://unopengis.org/unopengis/resources/resources04.php" data-fullname="">Videos</a></li>
+																		<li><a href="http://unopengis.org/unopengis/photo/photo.php" data-fullname="">Photos</a></li>
+																	</ul>
+															</li>
+														<li>
+								<a href="http://unopengis.org/unopengis/call/call01.php" data-fullname="">Call for Participation</a>
+															</li>
+														<li style="display:none;">
+								<a href="javascript:;">Members</a>
+								<ul class="m-depth02">
+									<li><a href="http://unopengis.org/unopengis/member/login.php">Login</a></li>
+									<li><a href="http://unopengis.org/unopengis/member/join.php">Join</a></li>
+									<li><a href="http://unopengis.org/unopengis/member/privacy.php">Privacy</a></li>
+									<li><a href="http://unopengis.org/unopengis/member/terms.php">Terms</a></li>
+									<li><a href="http://unopengis.org/unopengis/member/copyright.php">Copyright</a></li>
+									<li><a href="http://unopengis.org/unopengis/member/mypage.php">Mypage</a></li>
+								</ul>
+							</li>
+						</ul>
+						<article class="m-right-bg posR" style="height: 1539px;">
+							<a href="javascript:;" class="m-depth-close"><img src="./resources_files/btn_close_gnb.png" alt="메뉴닫기"></a>
+						</article>
+					</article>
+				</article>
+			</article>
+		</article>
+	</article>
+</header>
+</div>
+			<section id="content">
+				<div class="reset">
+<article class="sub-common w1140">
+	<article class="sub-nav">
+		<a href="http://unopengis.org/unopengis/main/main.php"><img src="./resources_files/sub-nav-home.png" alt="홈 아이콘"></a>
+		<u><img src="./resources_files/sub-nav-arrow.png" alt="화살표"></u>
+		<span>Resources</span>
+		<!-- <u><img src="../img/sub-nav-arrow.png" alt="화살표"></u>
+		<b></b> -->
+	</article>
+	<article class="sub-title">
+		<p>Resources</p>
+	</article>
+</article>
+</div>
+
+<script>
+(function ($) {
+	$('#header .head-depth a').filter(function () {
+		return location.href.indexOf(this.href) === 0;
+	}).last().each(function () {
+		activeNav(this);
+	});
+
+	function activeNav(a)
+	{
+		var d1 = '', d2 = '';
+
+		$(a).each(function () {
+			$(this).closest('.depth01 > li').each(function () {
+				d1 = $(this).children('a:first').map(function () {
+					return $(this).data('fullname') || $(this).text();
+				}).get(0);
+				d2 = d1;
+			});
+			$(this).closest('.depth02 > li').each(function () {
+				d2 = $(this).children('a:first').map(function () {
+					return $(this).data('fullname') || $(this).text();
+				}).get(0);
+			});
+			$(".sub-nav span").text(d1);
+			$(".sub-nav b, .sub-title p").text(d2);
+		});
+	}
+}) (jQuery);
+/*
+$(window).load(function(){
+	var url = window.location.pathname;
+	var urlPathname = url.substring( 0, url.substring(1).indexOf('/') + 2 ); // pathname중 첫번째 dir 네임  /a/b/c.php  ==> a			// 첫번째 디렉토리 이름
+	var fileName = url.substring(url.lastIndexOf('/') + 1);
+	var isForDev = fileName == "read.php" || fileName == "edit.php" || fileName == "write.php" || fileName == "password.php";
+	var parentDirIgnore = "/member/";
+
+	$(".depth02 li a").each(function(){
+		if ( $(this).attr("href") == url ){			
+
+			var depth01 = $(this).parent().parent().parent().find(">a").text();
+			var depth02 = $(this).text();
+			
+			$(".sub-nav span").text(depth01);
+			$(".sub-nav b").text(depth02);
+			$(".sub-title p").text(depth02);
+			
+		} else if ( isForDev ){
+			if(url.indexOf(parentDirIgnore) < 0 ){
+				if ( $(this).attr("href").indexOf( url.substring(0, url.lastIndexOf('/')+1 ) ) > -1 ){
+
+					var depth01 = $(this).parent().parent().parent().find(">a").text();
+					var depth02 = $(this).text();
+					
+					$(".sub-nav span").text(depth01);
+					$(".sub-nav b").text(depth02);
+					$(".sub-title p").text(depth02);
+				}
+			}
+		}
+	});
+});
+*/
+</script>				<article class="resources01-01-wrap">
+					<article class="resources01-01-con w1140">
+						<article class="resources01-txt posR">
+							<a href="http://unopengis.org/unopengis/resources/resources01.php">MORE</a>
+							<p>SW Downloads</p>
+							<ul>
+																<li>
+									<a href="http://unopengis.org/unopengis/resources/resources01.php?exec=view&amp;no=3">
+										<img src="./resources_files/resources-list-icon.png" alt="리스트 아이콘">
+										<span>WG3-QGIS plugin OpenGXT</span>
+									</a>
+								</li>
+																<li>
+									<a href="http://unopengis.org/unopengis/resources/resources01.php?exec=view&amp;no=2">
+										<img src="./resources_files/resources-list-icon.png" alt="리스트 아이콘">
+										<span>QGIS Download</span>
+									</a>
+								</li>
+																<li>
+									<a href="http://unopengis.org/unopengis/resources/resources01.php?exec=view&amp;no=1">
+										<img src="./resources_files/resources-list-icon.png" alt="리스트 아이콘">
+										<span>[WG3] GeoAnalytic SW Downloads</span>
+									</a>
+								</li>
+																<!--li>
+									<a href="javascript:;" download>
+										<img src="../img/sub/resources-list-icon.png" alt="리스트 아이콘">
+										<span>Spiral1-Geo shape Anywhere</span>
+									</a>
+								</li>
+								<li>
+									<a href="javascript:;" download>
+										<img src="../img/sub/resources-list-icon.png" alt="리스트 아이콘">
+										<span>Spiral2-QGIS</span>
+									</a>
+								</li>
+								<li>
+									<a href="javascript:;" download>
+										<img src="../img/sub/resources-list-icon.png" alt="리스트 아이콘">
+										<span>Spiral3-UDIG</span>
+									</a>
+								</li>
+								<li>
+									<a href="javascript:;" download>
+										<img src="../img/sub/resources-list-icon.png" alt="리스트 아이콘">
+										<span>Spiral3-UN Geo Analysis2.1</span>
+									</a>
+								</li>
+								<li>
+									<a href="javascript:;" download>
+										<img src="../img/sub/resources-list-icon.png" alt="리스트 아이콘">
+										<span>Spiral4-Geo CMS2.0</span>
+									</a>
+								</li-->
+							</ul>
+						</article>
+						<article class="resources01-txt mt60 posR">
+							<a href="http://unopengis.org/unopengis/resources/resources02.php">MORE</a>
+							<p>Source Codes</p>
+							<ul>
+																<li>
+									<a href="http://unopengis.org/unopengis/resources/resources02.php?exec=view&amp;no=6">
+										<img src="./resources_files/resources-list-icon.png" alt="리스트 아이콘">
+										<span>[OpenData] Agro-Ecological Zone</span>
+									</a>
+								</li>
+																<li>
+									<a href="http://unopengis.org/unopengis/resources/resources02.php?exec=view&amp;no=5">
+										<img src="./resources_files/resources-list-icon.png" alt="리스트 아이콘">
+										<span>[OpenData] Aerosol Index</span>
+									</a>
+								</li>
+																<li>
+									<a href="http://unopengis.org/unopengis/resources/resources02.php?exec=view&amp;no=4">
+										<img src="./resources_files/resources-list-icon.png" alt="리스트 아이콘">
+										<span>[OpenData] Land Cover and Elevation</span>
+									</a>
+								</li>
+																<li>
+									<a href="http://unopengis.org/unopengis/resources/resources02.php?exec=view&amp;no=3">
+										<img src="./resources_files/resources-list-icon.png" alt="리스트 아이콘">
+										<span>[WG5] Cloud free satellite image processing - GitHub</span>
+									</a>
+								</li>
+																<li>
+									<a href="http://unopengis.org/unopengis/resources/resources02.php?exec=view&amp;no=2">
+										<img src="./resources_files/resources-list-icon.png" alt="리스트 아이콘">
+										<span>[WG4] Source Code_The United Nations Vector Tile Toolkit  - GitHub</span>
+									</a>
+								</li>
+																<!--li>
+									<a href="javascript:;" target="_blank">
+										<img src="../img/sub/resources-list-icon.png" alt="리스트 아이콘">
+										<span>Spiral1-Geo shape Anywhere GitHub</span>
+									</a>
+								</li>
+								<li>
+									<a href="javascript:;" target="_blank">
+										<img src="../img/sub/resources-list-icon.png" alt="리스트 아이콘">
+										<span>Spiral2-QGIS GitHub</span>
+									</a>
+								</li>
+								<li>
+									<a href="javascript:;" target="_blank">
+										<img src="../img/sub/resources-list-icon.png" alt="리스트 아이콘">
+										<span>Spiral3-UDIG GitHub</span>
+									</a>
+								</li>
+								<li>
+									<a href="javascript:;" target="_blank">
+										<img src="../img/sub/resources-list-icon.png" alt="리스트 아이콘">
+										<span>Spiral3-UN Geo Analysis2.1 GitHub</span>
+									</a>
+								</li>
+								<li>
+									<a href="javascript:;" target="_blank">
+										<img src="../img/sub/resources-list-icon.png" alt="리스트 아이콘">
+										<span>Spiral4-Geo CMS2.0 GitHub</span>
+									</a>
+								</li-->
+							</ul>
+						</article> 
+					</article>
+				</article>
+				<article class="resources01-02-wrap">
+					<article class="resources01-02-con w1140">
+						<article class="resources01-02-in mt70 clear">
+							<article class="left">
+																<article class="img">
+									<img src="./resources_files/resources01-01-img01.jpg" alt="ppt">
+								</article>
+								<p><b>Chair</b><u>|</u>FOSS4G 2018 Dar es Salaam</p>
+																<!--article class="img">
+									<img src="../img/sub/resources01-01-img01.jpg" alt="ppt">
+								</article>
+								<p><b>Chair</b><u>|</u>FOSS4G 2018 Dar es Salaam</p-->
+							</article>
+							<article class="right">
+								<article class="resources01-txt posR">
+									<a href="http://unopengis.org/unopengis/resources/resources03.php">MORE</a>
+									<p>Documents</p>
+									<ul>
+																				<li>
+											<a href="http://unopengis.org/unopengis/resources/resources03.php?exec=view&amp;no=23">
+												<img src="./resources_files/resources-list-icon.png" alt="리스트 아이콘">
+												<span>Working Groups of UN Open GIS Initiative (Feb 2024)</span>
+											</a>
+										</li>
+																				<li>
+											<a href="http://unopengis.org/unopengis/resources/resources03.php?exec=view&amp;no=22">
+												<img src="./resources_files/resources-list-icon.png" alt="리스트 아이콘">
+												<span>2022 FOSS4G Keynote Presentation by Co-chairs of UN Open GIS Initiative</span>
+											</a>
+										</li>
+																				<li>
+											<a href="http://unopengis.org/unopengis/resources/resources03.php?exec=view&amp;no=21">
+												<img src="./resources_files/resources-list-icon.png" alt="리스트 아이콘">
+												<span>[22 June 2022] Monthly VTC</span>
+											</a>
+										</li>
+																				<li>
+											<a href="http://unopengis.org/unopengis/resources/resources03.php?exec=view&amp;no=20">
+												<img src="./resources_files/resources-list-icon.png" alt="리스트 아이콘">
+												<span>[March 2022] UN Open GIS Initiative Working Group-5 Geo AI Monthly Meeting</span>
+											</a>
+										</li>
+																				<!--li>
+											<a href="javascript:;" download>
+												<img src="../img/sub/resources-list-icon.png" alt="리스트 아이콘">
+												<span>Challenge & Oportunity UN Open GIS Initiative</span>
+											</a>
+										</li>
+										<li>
+											<a href="javascript:;" download>
+												<img src="../img/sub/resources-list-icon.png" alt="리스트 아이콘">
+												<span>Presentation</span>
+											</a>
+										</li>
+										<li>
+											<a href="javascript:;" download>
+												<img src="../img/sub/resources-list-icon.png" alt="리스트 아이콘">
+												<span>Presentation</span>
+											</a>
+										</li>
+										<li>
+											<a href="javascript:;" download>
+												<img src="../img/sub/resources-list-icon.png" alt="리스트 아이콘">
+												<span>Presentation</span>
+											</a>
+										</li-->										
+									</ul>
+								</article>
+							</article>
+						</article>
+						
+					</article>
+				</article>
+				<article class="media-bg"></article>
+				<article class="media">
+					<article class="media-box">
+						<iframe src="./resources_files/D_fX4tcoL1k.html" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe>
+						<p>
+							<img src="./resources_files/resources-list-icon.png" alt="리스트 아이콘">
+							<span>Ebola Predictive Model - (1) from UN Open GIS Spiral 3</span>
+						</p>
+					</article>
+					<article class="media-box">
+						<iframe src="./resources_files/D_fX4tcoL1k(1).html" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe>
+						<p>
+							<img src="./resources_files/resources-list-icon.png" alt="리스트 아이콘">
+							<span>Video2</span>
+						</p>
+					</article>
+					<article class="media-box">
+						<iframe src="./resources_files/D_fX4tcoL1k(2).html" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe>
+						<p>
+							<img src="./resources_files/resources-list-icon.png" alt="리스트 아이콘">
+							<span>Video3</span>
+						</p>
+					</article>
+					<article class="media-box">
+						<iframe src="./resources_files/D_fX4tcoL1k(3).html" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe>
+						<p>
+							<img src="./resources_files/resources-list-icon.png" alt="리스트 아이콘">
+							<span>Video4</span>
+						</p>
+					</article>
+				</article>
+			</section>
+			<link href="./resources_files/icon" rel="stylesheet">
+<style>
+    .material-icons {
+  font-family: 'Material Icons';
+  font-weight: normal;
+  font-style: normal;
+  font-size: 24px;  /* Preferred icon size */
+  display: inline-block;
+  line-height: 1;
+  text-transform: none;
+  letter-spacing: normal;
+  word-wrap: normal;
+  white-space: nowrap;
+  direction: ltr;
+
+  /* Support for all WebKit browsers. */
+  -webkit-font-smoothing: antialiased;
+  /* Support for Safari and Chrome. */
+  text-rendering: optimizeLegibility;
+
+  /* Support for Firefox. */
+  -moz-osx-font-smoothing: grayscale;
+
+  /* Support for IE. */
+  font-feature-settings: 'liga';
+}
+</style>
+<div class="reset">
+<footer id="footer">
+	<article class="foot-wrap">
+		<article class="foot-con w1140">
+			<article class="foot-nav">
+				<a href="http://unopengis.org/unopengis/about/about04.php">CONTACT</a>
+				<span>·</span>
+				<a href="http://unopengis.org/unopengis/member/copyright.php">COPYRIGHT</a>
+				<span>·</span>
+				<a href="http://unopengis.org/unopengis/member/privacy.php">PRIVACY NOTICE</a>
+				<span>·</span>
+				<a href="http://unopengis.org/unopengis/member/terms.php">TERMS OF USE</a>
+				<span>·</span>
+				<a href="http://unopengis.org/sboard/admin.php">
+                    <div style="background-color: #ddd; border-radius: 100%; width: 30px; height: 30px; line-height: 30px; text-align: center; position: relative; top: -10px;">
+                        <span class="material-icons" style="font-size: 14px; vertical-align: middle; margin: 0;">lock</span>
+                    </div>
+                </a>
+			</article>
+			<article class="foot-adr">
+				<p>UN Open GIS Initiative<span>|</span><br class="m-block">ADD : 760 United Nations Plaza Manhattan, New York City, United States</p>
+				<p>UN Open GIS Secretariat Office<span>|</span><br class="m-block">ADD : 5 Gukchaegyeonguwon-ro, Sejong-si, 30147, South Korea<span>|</span><br class="m-block">TEL : +82-44-960-0405<!-- +82-44-960-0178 --><span class="m-on">|</span>FAX : +82-44-211-4772<span>|</span><br class="m-block">E-mail : UNOpenGIS@krihs.re.kr</p>
+				<span>COPYRIGHT (C) 2019 UN OPEN GIS INITIATIVE ALL RIGHTS RESERVED. </span>
+			</article>
+		</article>
+	</article>
+</footer>
+</div>
+		</section>
+	
+<iframe id="o9EFg9f7" frameborder="0" src="./resources_files/translateSandbox(1).html" style="width: 0px; height: 0px; display: none;"></iframe></body><grammarly-desktop-integration data-grammarly-shadow-root="true"><template shadowrootmode="open"><style>
+      div.grammarly-desktop-integration {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        white-space: nowrap;
+        border: 0;
+        -moz-user-select: none;
+        -webkit-user-select: none;
+        -ms-user-select:none;
+        user-select:none;
+      }
+
+      div.grammarly-desktop-integration:before {
+        content: attr(data-content);
+      }
+    </style><div aria-label="grammarly-integration" role="group" tabindex="-1" class="grammarly-desktop-integration" data-content="{&quot;mode&quot;:&quot;limited&quot;,&quot;isActive&quot;:false,&quot;isUserDisabled&quot;:false}"></div></template></grammarly-desktop-integration></html>
