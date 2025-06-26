@@ -1,0 +1,61 @@
+@charset "utf-8";
+/* =====================================
+            @import
+======================================*/
+@import url( "http://fonts.googleapis.com/earlyaccess/notosanskr.css" );
+@import url("https://fonts.googleapis.com/css?family=Roboto:400,500,700&display=swap");
+
+/* =====================================
+              CSS RESET
+===================================== */
+html, body, div, span, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+abbr, address, cite, code,
+del, dfn, em, img, ins, kbd, q, samp,
+small, strong, sub, sup, var,
+b, i,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section, summary,
+time, mark, audio, video { margin:0; padding:0; border:0; outline:0;}
+body {line-height:1; font-family: "Roboto", "Noto Sans KR", sans-serif;}
+article,aside,details,figcaption,figure,
+footer,header,hgroup,menu,nav,section {display:block;}
+a {text-decoration:none; /* font-family: "Roboto"; */ -webkit-tap-highlight-color: transparent; -o-tap-highlight-color: transparent; -ms-tap-highlight-color: transparent; -moz-tap-highlight-color: transparent;}
+div{-webkit-tap-highlight-color: transparent; -o-tap-highlight-color: transparent; -ms-tap-highlight-color: transparent; -moz-tap-highlight-color: transparent;}
+input{-webkit-tap-highlight-color: transparent; -o-tap-highlight-color: transparent; -ms-tap-highlight-color: transparent; -moz-tap-highlight-color: transparent;}
+select{-webkit-tap-highlight-color: transparent; -o-tap-highlight-color: transparent; -ms-tap-highlight-color: transparent; -moz-tap-highlight-color: transparent;}
+a:link{text-decoration:none;}
+a:hover{text-decoration:none;}
+a:visited{ text-decoration:none;}
+li, ul, ol {list-style:none;}
+u{text-decoration:none;}
+img {
+	border:0;
+    vertical-align: top;
+}
+
+/* body{font-family: "Noto Sans KR", sans-serif;} */
+
+table{
+    border-collapse: collapse;
+}
+
+/*button,input[type="button"],input[type="submit"],input[type="reset"],input[type="file"]{-webkit-appearance:button;border-radius:0; appearance:none; -moz-appearance:none; -webkit-appearance:none; cursor:pointer;}
+input{box-sizing:border-box; vertical-align:middle; appearance:none; -moz-appearance:none; -webkit-appearance:none;}
+select {box-sizing:border-box; vertical-align:middle; appearance:none; -moz-appearance:none; -webkit-appearance:none;}
+select::-ms-expand {display: none;}*/
+
+
+/* =====================================
+            Clear
+===================================== */
+.clear:after {
+    content: "";
+    display: block;
+    clear: both;
+}
+
+.roboto{font-family: "Roboto", sans-serif;}
