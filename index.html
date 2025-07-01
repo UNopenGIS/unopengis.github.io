@@ -1,0 +1,1729 @@
+<!DOCTYPE html>
+<!-- saved from url=(0044)http://unopengis.org/unopengis/main/main.php -->
+<html lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+    <title>UN Open GIS</title>
+    <meta name="author" content="UN Open GIS" />
+    <!-- 사이트 저작자 표시 -->
+    <meta
+      name="keywords"
+      content="UN Open GIS, Home, About Us, What We Do, Resources, News and Media, Call for Participation"
+    />
+    <!-- 검색 엔진을 위한 키워드 -->
+    <meta name="description" content="UN Open GIS" />
+    <!-- 사이트에 대한 설명 -->
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+
+    <meta
+      name="viewport"
+      content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0, user-scalable=no"
+    />
+    <!-- <meta name="viewport" content="width=1280, user-scalable=yes, target-densitydpi=device-dpi"> -->
+
+    <!-- IE 호환모드 설정(인터넷 익스플로러가 항상 최신 버전의 레이아웃 엔진을 사용하여 문서를 렌더링하도록 지정) -->
+    <!--[if lt IE 9]>
+      <script src="../js/css-support.js"></script>
+    <![endif]-->
+
+    <!-- ie8 이하에서 html5 시멘틱 태그와,  css3 선택자 일부 지원, 미디어쿼리 지원 -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+      <script src="http://ie7-js.googlecode.com/svn/version/2.1(beta4)/IE9.js"></script>
+      <script src="http://css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js"></script>
+    <![endif]-->
+    <!-- <link href="./UN Open GIS_files/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous"> -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <link rel="stylesheet" href="./UN Open GIS_files/reset.css" />
+    <link rel="stylesheet" href="./UN Open GIS_files/layout.css" />
+    <link rel="stylesheet" href="./UN Open GIS_files/sub.css" />
+    <link rel="stylesheet" href="./UN Open GIS_files/layerPopup.css" />
+    <link rel="stylesheet" href="./UN Open GIS_files/style.css" />
+
+    <script src="./UN Open GIS_files/jquery-1.11.3.min.js"></script>
+    <script src="./UN Open GIS_files/jquery-ui.min.js"></script>
+    <script src="./UN Open GIS_files/myfunc.js"></script>
+    <script src="./UN Open GIS_files/main.js"></script>
+    <script src="./UN Open GIS_files/jquery.bxslider.js"></script>
+    <!-- bx 슬라이더 js -->
+    <script src="./UN Open GIS_files/layerPopup.js"></script>
+
+    <script language="JavaScript">
+      // <!--
+      // var driver  = 'MYSQL';
+      var baseDir = "../../sboard/";
+      // var fpWin   = null;
+
+      // browser Check
+      // var is = null;
+      // function BrowserCheck() {
+      // 	this.ie  = ( document.all ) ? 1 : 0;
+      // 	this.ns  = document.getElementById && !document.all ? 1 : 0;
+      // }
+      // is = new BrowserCheck();
+
+      // function getObject( objStr, tier ) {
+      // 	var docStr = "";
+      // 	var obj	= null;
+      // 	if ( typeof(tier) == "string" ) docStr = tier + "." + "document";
+      // 	else docStr = "document";
+      // 	if (is.ie) {
+      // 		obj = eval( docStr + ".all['" + objStr + "']"); // IE
+      // 	}else if ( is.ns ){
+      // 		obj = eval( docStr + ".getElementById('" + objStr + "');"); // NS
+      // 		if(!obj){
+      // 			obj = eval( docStr + ".getElementsByName('" + objStr + "')[0];"); // NS
+      // 		}
+      // 	}
+      // 	return obj;
+      // }
+
+      // function getOnlyURL(_url) {
+      // 	var url = _url;
+      // 	var e = url.indexOf ( '?' );
+      // 	if ( e > 0 ) url = url.substring(0,e);
+      // 	return url;
+      // }
+      //-->
+    </script>
+    <script language="JavaScript">
+      // <!--
+      var poll_id = "";
+      var poll_exec = "";
+
+      // sucMode : '1' : 로그인 성공 메시지 출력
+      //			 '2' : 로그인후 윈도우 닫기
+      //			 '3' : 로그 아웃 스킨 표시 ( 기본 값 )
+      // function loginPopup ( skinName, width, height, left, top, scroll_yn, sucMode, successURL, message ) {
+      // 	var url = '';
+      // 	var bDir = '';
+      // 	if ( typeof(baseDir   ) != 'undefined' ) bDir = baseDir;
+      // 	if ( typeof(skinName  ) == 'undefined' ) skinName = '';
+      // 	if ( typeof(sucMode   ) == 'undefined' ) sucMode = '1';
+      // 	if ( typeof(successURL) == 'undefined' ) successURL = '';
+      // 	if ( typeof(message   ) == 'undefined' ) message = '';
+
+      // 	url = bDir + 'dlogin.php?login_skin_name=' + skinName + '&suc_mode=' + sucMode;
+      // 	if ( typeof(id      ) != 'undefined' ) url += '&id=' + id;
+      // 	if ( typeof(poll_id ) != 'undefined' ) url += '&poll_id=' + poll_id;
+
+      // 	if ( successURL != '') url += '&succ_url='+ encodeURI (successURL);
+      // 	if ( message	!= '') url += '&message=' + encodeURI (message   );
+      // 	url += '&lg=Y';
+      // 	var loginWin = window.open(url,'loginWin','toolbar=no,menubar=no,resizable=no,scrollbars=' + scroll_yn + ',left=' + left + ',top=' + top + ',width=' + width + ',height=' + height );
+      // 	loginWin.focus();
+      // }
+      // skinName : 스킨명
+      // successURL : 성공시 이동할 경로명
+      // function loginPage ( skinName, successURL ) {
+      // 	var url = '';
+      // 	var bDir = '';
+      // 	if ( typeof(baseDir   ) != 'undefined' ) bDir = baseDir;
+      // 	if ( typeof(skinName  ) == 'undefined' ) skinName = '';
+      // 	if ( typeof(successURL) == 'undefined' ) successURL= '';
+      // 	url = bDir + 'dlogin.php?login_skin_name=' + skinName +  '&suc_mode=4'  + '&succ_url='  + escape (successURL);
+      // 	var loginWin = document.location.href = url;
+      // 	loginWin.focus();
+      // }
+
+      // function loginFormSubmit(myForm) {
+      // 	var url ='';
+      // 	if ( typeof(baseDir) != 'undefined' ) url = baseDir + 'login_ok.php';
+      // 	else url = 'login_ok.php';
+
+      // 	var first = true;
+      // 	var suc_mode = '';
+      // 	if ( typeof ( myForm.suc_mode ) != 'undefined' ) {
+      // 		suc_mode = myForm.suc_mode.value;
+      // 		if ( suc_mode != '' ) { url += '?suc_mode=' + suc_mode; first = false; }
+      // 	}
+
+      // 	url += getLoginUrl (first);
+      // 	if ( typeof ( myForm.message  ) != 'undefined' ) myForm.message.value  = decodeURI ( myForm.message.value );
+      // 	if ( typeof ( myForm.succ_url ) != 'undefined' ) myForm.succ_url.value = decodeURI ( myForm.succ_url.value);
+
+      // 	myForm.action = url;
+
+      // 	if ( myForm.user_id.value  == '' ) { alert ("ID를 입력해주세요."); myForm.user_id.focus(); return false; }
+      // 	if ( myForm.password.value == '' ) { alert ("Password를 입력해주세요."); myForm.password.focus(); return false; }
+      // 	return true;
+      // }
+
+      // function logout(myForm) {
+      // 	var formMode = 1;
+      // 	if ( typeof(myForm) == 'undefined' ) {
+      // 		myForm = document.logoutForm;
+      // 		formMode = 2;
+      // 	}
+      // 	var url ='';
+      // 	if ( typeof(baseDir) != 'undefined' ) url = baseDir + 'logout_ok.php';
+      // 	else url = 'logout_ok.php';
+      // 	url += getLoginUrl (true);
+      // 	if ( typeof ( myForm.message  ) != 'undefined' ) myForm.message.value  = encodeURI ( myForm.message.value  );
+      // 	if ( typeof ( myForm.succ_url ) != 'undefined' ) myForm.succ_url.value = encodeURI ( myForm.succ_url.value );
+
+      // 	myForm.action = url;
+
+      // 	if ( formMode == 1 ) return true;
+      // 	else myForm.submit();
+      // }
+
+      // function getLoginUrl (first) {
+      // 	var url = '';
+      // 	if ( typeof(id   ) != 'undefined' && id   != '' ) if ( first ) { url += '?id='   + id  ; first = false;} else { url += '&id='   + id  ; }
+      // 	if ( typeof(npop ) != 'undefined' && npop != '' ) if ( first ) { url += '?npop=' + npop; first = false;} else { url += '&npop=' + npop; }
+      // 	if ( typeof(exec ) != 'undefined' && exec != '' ) if ( first ) { url += '?exec=' + exec; first = false;} else { url += '&exec=' + exec; }
+      // 	if ( typeof(no   ) != 'undefined' && no	  != '' ) if ( first ) { url += '?no='   + no  ; first = false;} else { url += '&no='   + no  ; }
+      // 	if ( typeof(s    ) != 'undefined' && s    != '' ) if ( first ) { url += '?s='    + s   ; first = false;} else { url += '&s='    + s   ; }
+
+      // 	if ( typeof(poll_id  ) != 'undefined' && poll_id  != '' ) if ( first ) { url += '?poll_id='  + poll_id  ; first = false; } else { url += '&poll_id='  + poll_id  ; }
+      // 	if ( typeof(poll_exec) != 'undefined' && poll_exec!= '' ) if ( first ) { url += '?poll_exec='+ poll_exec; first = false; } else { url += '&poll_exec='+ poll_exec; }
+      // 	return url;
+      // }
+
+      // function comfirmClick(argu1) {
+      // 	if ( typeof(opener	 ) != 'undefined' && typeof(opener.document) == 'object' ) {
+      // 		if ( argu1 == '' ) {
+      // 			opener.focus();
+      // 			self.close();
+      // 		} else {
+      // 			document.location.replace(argu1);
+      // 		}
+      // 	} else {
+      // 		if ( argu1 == '' ) document.location.replace('/');
+      // 		else document.location.replace(argu1);
+      // 	}
+      // }
+      // var memberWin = null;
+      // mode : '1' : 팝업에서   회원 가입 페이지 열기
+      //        '2' : 현재창에서 회원 가입 페이지 열기
+      // successURL : 가입 성공시 이동 페이지
+      // width      : 팝업 윈도우 가로 크기
+      // height     : 팝업 윈도우 세로 크기
+      // scroll     : 팝업 윈도우 스크롤바 생성 여부 ( 'Y', 'N' )
+      // function openMemberCB (gubun, mode, successURL, width, height, scroll, user_id) {
+      // 	if ( typeof(successURL) == 'undefined' ) successURL = '' ;
+      // 	if ( memberWin != null ) memberWin.close();
+      // 	var url = '';
+      // 	if ( typeof(baseDir) != 'undefined' ) url = baseDir;
+
+      // 	if      ( gubun == 'insert'      ) url += 'member_register.php';
+      // 	else if ( gubun == 'update'      ) url += 'member_register.php';
+      // 	else if ( gubun == 'secession'   ) url += 'member_secession.php';
+      // 	else if ( gubun == 'infor_search') url += 'member_infor_search.php';
+      // 	else if ( gubun == 'view'        ) url += 'member_view.php';
+
+      // 	if ( typeof(id) == 'undefined' ) {
+      // 		if ( successURL != '' ) {
+      // 			url += '?succ_url=' + escape (successURL);
+      // 			if      ( gubun == 'update'      ) url += '&mexec=update';
+      // 			else if ( gubun == 'secession'   ) url += '&mode=' + mode;
+      // 			else if ( gubun == 'infor_search') url += '&mode=' + mode;
+      // 			else if ( gubun == 'view'        ) url += '&user_id=' + user_id;
+      // 		} else {
+      // 			if      ( gubun == 'update'      ) url += '?mexec=update';
+      // 			else if ( gubun == 'secession'   ) url += '?mode=' + mode;
+      // 			else if ( gubun == 'infor_search') url += '?mode=' + mode;
+      // 			else if ( gubun == 'view'        ) url += '?user_id=' + user_id;
+      // 		}
+      // 	} else {
+      // 		if ( successURL != '' ) {
+      // 			url += '?id=' + id + '&succ_url=' + escape (successURL);
+      // 		} else {
+      // 			url += '?id=' + id;
+      // 		}
+      // 		if      ( gubun == 'update'      ) url += '&mexec=update';
+      // 		else if ( gubun == 'secession'   ) url += '&mode=' + mode;
+      // 		else if ( gubun == 'infor_search') url += '&mode=' + mode;
+      // 		else if ( gubun == 'view'        ) url += '&user_id=' + user_id;
+      // 	}
+
+      // 	if ( mode == '1' ) {
+      //         scroll = ( scroll == 'Y' ) ? "yes" : "no";
+      // 		var target = '';
+      // 		if      ( gubun == 'insert'      ) target += 'memberWin';
+      // 		else if ( gubun == 'update'      ) target += 'memberWin';
+      // 		else if ( gubun == 'secession'   ) target += 'secessWin';
+      // 		else if ( gubun == 'infor_search') target += 'inforsWin';
+      // 		memberWin = window.open(url, target,'toolbar=no,menubar=no,resizable=no,scrollbars=' + scroll + ',width=' + width + ',height=' + height );
+      // 		memberWin.focus();
+      // 	} else if ( mode == '2' ) {
+      // 		document.location.href = url;
+      // 	}
+      // }
+
+      // function openMemberRegister (mode, successURL, width, height, scroll) {
+      // 	if ( typeof(mode) == 'undefined' || mode == '' ) mode = '1';
+      // 	if ( mode == '1' ) {
+      // 		if ( typeof(width ) == 'undefined' || width  == '' ) width  = member_register_popup_width;
+      // 		if ( typeof(height) == 'undefined' || height == '' ) height = member_register_popup_height;
+      // 		if ( typeof(scroll) == 'undefined' || scroll == '' ) scroll = 'Y';
+      // 	}
+      // 	openMemberCB ('insert',mode, successURL, width, height, scroll);
+      // }
+
+      // function openMemberUpdate (mode, successURL, width, height, scroll ) {
+      // 	if ( typeof(mode) == 'undefined' || mode == '' ) mode = '1';
+      // 	if ( mode == '1' ) {
+      // 		if ( typeof(width ) == 'undefined' || width  == '' ) width  = member_update_popup_width;
+      // 		if ( typeof(height) == 'undefined' || height == '' ) height = member_update_popup_height;
+      // 		if ( typeof(scroll) == 'undefined' || scroll == '' ) scroll = 'Y';
+      // 	}
+      // 	openMemberCB ('update',mode, successURL, width, height, scroll);
+      // }
+
+      // function openMemberSecession(mode, successURL, width, height, scroll) {
+      // 	if ( typeof(mode) == 'undefined' || mode == '' ) mode = '1';
+      // 	if ( mode == '1' ) {
+      // 		if ( typeof(width ) == 'undefined' || width  == '' ) width  = member_secession_popup_width;
+      // 		if ( typeof(height) == 'undefined' || height == '' ) height = member_secession_popup_height;
+      // 		if ( typeof(scroll) == 'undefined' || scroll == '' ) scroll = 'Y';
+      // 	}
+      // 	openMemberCB ('secession',mode, successURL, width, height, scroll);
+      // }
+
+      // function openMemberInforSearch(mode, successURL, width, height, scroll) {
+      // 	if ( typeof(mode) == 'undefined' || mode == '' ) mode = '1';
+      // 	if ( mode == '1' ) {
+      // 		if ( typeof(width ) == 'undefined' || width  == '' ) width  = member_infor_search_popup_width;
+      // 		if ( typeof(height) == 'undefined' || height == '' ) height = member_infor_search_popup_height;
+      // 		if ( typeof(scroll) == 'undefined' || scroll == '' ) scroll = 'Y';
+      // 	}
+      // 	openMemberCB ('infor_search',mode, successURL, width, height, scroll);
+      // }
+
+      // function openMemberView (user_id, mode, successURL, width, height, scroll ) {
+      // 	if ( typeof(mode) == 'undefined' || mode == '' ) mode = '1';
+      // 	if ( mode == '1' ) {
+      // 		if ( typeof(width ) == 'undefined' || width  == '' ) width  = member_view_popup_width;
+      // 		if ( typeof(height) == 'undefined' || height == '' ) height = member_view_popup_height;
+      // 		if ( typeof(scroll) == 'undefined' || scroll == '' ) scroll = 'Y';
+      // 	}
+      // 	openMemberCB ('view',mode, successURL, width, height, scroll, user_id);
+      // }
+      //-->
+    </script>
+    <link rel="stylesheet" href="./UN Open GIS_files/main.css" />
+    <script
+      charset="utf-8"
+      src="./UN Open GIS_files/timeline.e108540dddc96e4b707f5cf259a582d7.js"
+    ></script>
+  </head>
+  <body data-new-gr-c-s-check-loaded="14.1190.0" data-gr-ext-installed="">
+    <iframe
+      name="ajaxTarget"
+      id="ajaxTarget"
+      frameborder="0"
+      src="./UN Open GIS_files/saved_resource.html"
+    ></iframe>
+    <div id="blackWrap"></div>
+    <div id="layerPopupWrap">
+      <div id="layerPopup" class="ui-draggable ui-draggable-handle"></div>
+    </div>
+    <section id="wrap">
+      <div class="reset">
+        <header id="header">
+          <article class="head-wrap">
+            <article class="head-con">
+              <article class="head-t-nav">
+                <article class="head-t-in w1140">
+                  <a
+                    href="https://operationalsupport.un.org/en/partnership-initiatives"
+                    target="_blank"
+                    >Welcome to Partnership Initiatives of United Nations
+                    Department of Operational Support</a
+                  >
+                </article>
+              </article>
+              <article class="head-topbar"></article>
+              <article class="head-in pcV">
+                <article class="head-top">
+                  <article class="head-top-in w1140 clear">
+                    <article class="left">
+                      <a href="index.html">
+                        <img
+                          src="./UN Open GIS_files/logo.png"
+                          alt="UN Open GIS logo"
+                        />
+                      </a>
+                    </article>
+                    <!-- <article class="right">
+                      <a href="http://unopengis.org/unopengis/main/main.php"
+                        >Home</a
+                      >
+                      <span>·</span>
+                      <a href="http://unopengis.org/sboard/logout_ok.php"
+                        >LOGOUT</a
+                      >
+                      <span>·</span>
+                      <a href="http://unopengis.org/unopengis/member/mypage.php"
+                        >MYPAGE</a
+                      >
+                    </article> -->
+                  </article>
+                </article>
+                <article class="head-depth-wrap">
+                  <article class="head-depth w1140">
+                    <ul class="depth01 clear">
+                      <li>
+                        <a href="Overvierw.html" data-fullname="">Overview</a>
+                        <ul class="depth02">
+                          <li>
+                            <a href="1572933278-2.pdf" data-fullname=""
+                              >About Us</a
+                            >
+                          </li>
+                          <li>
+                            <a href="Governance.html" data-fullname=""
+                              >Governance Structure</a
+                            >
+                          </li>
+                          <li>
+                            <a href="members.html" data-fullname="">Members</a>
+                          </li>
+                          <li>
+                            <a href="Overvierw.html#about01_03" data-fullname=""
+                              >CI</a
+                            >
+                          </li>
+                          <li>
+                            <a href="contact.html" data-fullname=""
+                              >Contact Us</a
+                            >
+                          </li>
+                        </ul>
+                      </li>
+                      <li>
+                        <a href="Whatwedo.html" data-fullname="">What We Do</a>
+                        <ul class="depth02">
+                          <li>
+                            <a
+                              href="DWG1.html"
+                              data-fullname="DWG 1: Hybrid GIS Platform"
+                              >DWG 1: Hybrid GIS Platform</a
+                            >
+                          </li>
+                          <li>
+                            <a href="DWG2.html" data-fullname=""
+                              >DWG 2: Capacity Building</a
+                            >
+                          </li>
+                          <li>
+                            <a
+                              href="DWG5.html"
+                              data-fullname="DWG 5: GEOAI and Geo-Analytics"
+                              >DWG 5: GEOAI &amp; Analytics</a
+                            >
+                          </li>
+                          <li>
+                            <a
+                              href="DWG6.html"
+                              data-fullname="DWG 6: OpenDroneMap and 3D"
+                              >DWG 6: OpenDroneMap &amp; 3D</a
+                            >
+                          </li>
+                          <li>
+                            <a href="DWG7.html" data-fullname=""
+                              >DWG 7: Smart Maps</a
+                            >
+                          </li>
+                        </ul>
+                      </li>
+                      <li>
+                        <a href="BP_.html" data-fullname="">Best Practices</a>
+                      </li>
+                      <li>
+                        <a href="resources.html" data-fullname="">Resources</a>
+                        <ul class="depth02">
+                          <li>
+                            <a
+                              href="resources.html#SW_Downloads"
+                              data-fullname=""
+                              >SW Downloads</a
+                            >
+                          </li>
+                          <li>
+                            <a
+                              href="resources.html#Source_Codes"
+                              data-fullname=""
+                              >Source Codes</a
+                            >
+                          </li>
+                          <li>
+                            <a href="resources.html#Documents" data-fullname=""
+                              >Documents</a
+                            >
+                          </li>
+                        </ul>
+                      </li>
+                      <li>
+                        <a
+                          href="http://unopengis.org/unopengis/news/news01.php"
+                          data-fullname=""
+                          >News and Media</a
+                        >
+                        <ul class="depth02">
+                          <li>
+                            <a
+                              href="http://unopengis.org/unopengis/news/news01.php"
+                              data-fullname=""
+                              >News and Media</a
+                            >
+                          </li>
+                          <li>
+                            <a
+                              href="http://unopengis.org/unopengis/calendar/calendar.php"
+                              data-fullname=""
+                              >Meeting Schedule</a
+                            >
+                          </li>
+                          <li style="display: none">
+                            <a
+                              href="http://unopengis.org/unopengis/news/news.php"
+                              data-fullname=""
+                              >News</a
+                            >
+                          </li>
+                          <li>
+                            <a
+                              href="http://unopengis.org/unopengis/resources/resources04.php"
+                              data-fullname=""
+                              >Videos</a
+                            >
+                          </li>
+                          <li>
+                            <a
+                              href="http://unopengis.org/unopengis/photo/photo.php"
+                              data-fullname=""
+                              >Photos</a
+                            >
+                          </li>
+                        </ul>
+                      </li>
+                      <li>
+                        <a
+                          href="http://unopengis.org/unopengis/call/call01.php"
+                          data-fullname=""
+                          >Call for Participation</a
+                        >
+                      </li>
+                      <!-- comement out becasue of display: none -->
+                      <!-- <li style="display: none">
+                        <a
+                          href="http://unopengis.org/unopengis/member/login.php"
+                          >Members</a
+                        >
+                        <ul class="depth02">
+                          <li>
+                            <a
+                              href="http://unopengis.org/unopengis/member/login.php"
+                              >Login</a
+                            >
+                          </li>
+                          <li>
+                            <a
+                              href="http://unopengis.org/unopengis/member/join.php"
+                              >Join</a
+                            >
+                          </li>
+                          <li>
+                            <a
+                              href="http://unopengis.org/unopengis/member/privacy.php"
+                              >Privacy Notice</a
+                            >
+                          </li>
+                          <li>
+                            <a
+                              href="http://unopengis.org/unopengis/member/terms.php"
+                            >
+                              Terms of Use</a
+                            >
+                          </li>
+                          <li>
+                            <a
+                              href="http://unopengis.org/unopengis/member/copyright.php"
+                              >Copyright</a
+                            >
+                          </li>
+                          <li>
+                            <a
+                              href="http://unopengis.org/unopengis/member/mypage.php"
+                              >Mypage</a
+                            >
+                          </li>
+                        </ul>
+                      </li> -->
+                    </ul>
+                  </article>
+                </article>
+              </article>
+              <!-- Show the mobile version of the header -->
+              <article class="m-head-in mV posR">
+                <article class="m-head-top">
+                  <a href="http://unopengis.org/unopengis/main/main.php"
+                    >
+                    <img
+                      src="./UN Open GIS_files/logo.png"
+                      alt="UN Open GIS 로고"
+                  /></a>
+                </article>
+                <article class="m-head-con clear">
+                  <article class="left">
+                    <a href="javascript:;">
+                      <img
+                        src="./UN Open GIS_files/m-depth-icon.png"
+                        alt="전체메뉴 아이콘"
+                      />
+                    </a>
+                  </article>
+                  <article class="right">
+                    <a href="http://unopengis.org/unopengis/main/main.php"
+                      >HOME</a
+                    >
+                    <span>·</span>
+                    <a href="http://unopengis.org/sboard/logout_ok.php"
+                      >LOGOUT</a
+                    >
+                    <span>·</span>
+                    <a href="http://unopengis.org/unopengis/member/mypage.php"
+                      >MYPAGE</a
+                    >
+                  </article>
+                </article>
+                <article class="m-depth">
+                  <article class="m-depth-in clear">
+                    <ul class="m-depth01" style="height: 6797px">
+                      <li>
+                        <a href="http://unopengis.org/unopengis/main/main.php"
+                          >Home</a
+                        >
+                      </li>
+                      <li>
+                        <a href="javascript:void(0);" data-fullname=""
+                          >Overview</a
+                        >
+                        <ul class="m-depth02">
+                          <li>
+                            <a
+                              href="http://unopengis.org/unopengis/about/about01.php"
+                              data-fullname=""
+                              >Overview</a
+                            >
+                          </li>
+                          <li>
+                            <a
+                              href="http://unopengis.org/unopengis/about/about01_01.php"
+                              data-fullname=""
+                              >About Us</a
+                            >
+                          </li>
+                          <li>
+                            <a
+                              href="http://unopengis.org/unopengis/about/about01_02.php"
+                              data-fullname=""
+                              >Governance Structure</a
+                            >
+                          </li>
+                          <li>
+                            <a
+                              href="http://unopengis.org/unopengis/about/about05.php"
+                              data-fullname=""
+                              >Members</a
+                            >
+                          </li>
+                          <li>
+                            <a
+                              href="http://unopengis.org/unopengis/about/about01_03.php"
+                              data-fullname=""
+                              >CI</a
+                            >
+                          </li>
+                          <li>
+                            <a
+                              href="http://unopengis.org/unopengis/about/about04.php"
+                              data-fullname=""
+                              >Contact Us</a
+                            >
+                          </li>
+                        </ul>
+                      </li>
+                      <li>
+                        <a href="javascript:void(0);" data-fullname=""
+                          >What We Do</a
+                        >
+                        <ul class="m-depth02">
+                          <li>
+                            <a
+                              href="http://unopengis.org/unopengis/what/what00.php"
+                              data-fullname=""
+                              >What We Do</a
+                            >
+                          </li>
+                          <li>
+                            <a
+                              href="http://unopengis.org/unopengis/what/what01.php"
+                              data-fullname="DWG 1: Hybrid GIS Platform"
+                              >DWG 1: Hybrid GIS Platform</a
+                            >
+                          </li>
+                          <li>
+                            <a
+                              href="http://unopengis.org/unopengis/what/what02.php"
+                              data-fullname=""
+                              >DWG 2: Capacity Building</a
+                            >
+                          </li>
+                          <li>
+                            <a
+                              href="http://unopengis.org/unopengis/what/what03.php"
+                              data-fullname="DWG 5: GEOAI and Geo-Analytics"
+                              >DWG 5: GEOAI &amp; Analytics</a
+                            >
+                          </li>
+                          <li>
+                            <a
+                              href="http://unopengis.org/unopengis/what/what04.php"
+                              data-fullname="DWG 6: OpenDroneMap and 3D"
+                              >DWG 6: OpenDroneMap &amp; 3D</a
+                            >
+                          </li>
+                          <li>
+                            <a
+                              href="http://unopengis.org/unopengis/what/what05.php"
+                              data-fullname=""
+                              >DWG 7: Smart Maps</a
+                            >
+                          </li>
+                        </ul>
+                      </li>
+                      <li>
+                        <a
+                          href="http://unopengis.org/unopengis/best/best01.php"
+                          data-fullname=""
+                          >Best Practices</a
+                        >
+                      </li>
+                      <li>
+                        <a href="javascript:void(0);" data-fullname=""
+                          >Resources</a
+                        >
+                        <ul class="m-depth02">
+                          <li>
+                            <a
+                              href="http://unopengis.org/unopengis/resources/resources00.php"
+                              data-fullname=""
+                              >Resources</a
+                            >
+                          </li>
+                          <li>
+                            <a
+                              href="http://unopengis.org/unopengis/resources/resources01.php"
+                              data-fullname=""
+                              >SW Downloads</a
+                            >
+                          </li>
+                          <li>
+                            <a
+                              href="http://unopengis.org/unopengis/resources/resources02.php"
+                              data-fullname=""
+                              >Source Codes</a
+                            >
+                          </li>
+                          <li>
+                            <a
+                              href="http://unopengis.org/unopengis/resources/resources03.php"
+                              data-fullname=""
+                              >Documents</a
+                            >
+                          </li>
+                        </ul>
+                      </li>
+                      <li>
+                        <a href="javascript:void(0);" data-fullname=""
+                          >News and Media</a
+                        >
+                        <ul class="m-depth02">
+                          <li>
+                            <a
+                              href="http://unopengis.org/unopengis/news/news01.php"
+                              data-fullname=""
+                              >News and Media</a
+                            >
+                          </li>
+                          <li>
+                            <a
+                              href="http://unopengis.org/unopengis/news/news01.php"
+                              data-fullname=""
+                              >News and Media</a
+                            >
+                          </li>
+                          <li>
+                            <a
+                              href="http://unopengis.org/unopengis/calendar/calendar.php"
+                              data-fullname=""
+                              >Meeting Schedule</a
+                            >
+                          </li>
+                          <li style="display: none">
+                            <a
+                              href="http://unopengis.org/unopengis/news/news.php"
+                              data-fullname=""
+                              >News</a
+                            >
+                          </li>
+                          <li>
+                            <a
+                              href="http://unopengis.org/unopengis/resources/resources04.php"
+                              data-fullname=""
+                              >Videos</a
+                            >
+                          </li>
+                          <li>
+                            <a
+                              href="http://unopengis.org/unopengis/photo/photo.php"
+                              data-fullname=""
+                              >Photos</a
+                            >
+                          </li>
+                        </ul>
+                      </li>
+                      <li>
+                        <a
+                          href="http://unopengis.org/unopengis/call/call01.php"
+                          data-fullname=""
+                          >Call for Participation</a
+                        >
+                      </li>
+                      <li style="display: none">
+                        <a href="javascript:;">Members</a>
+                        <ul class="m-depth02">
+                          <li>
+                            <a
+                              href="http://unopengis.org/unopengis/member/login.php"
+                              >Login</a
+                            >
+                          </li>
+                          <li>
+                            <a
+                              href="http://unopengis.org/unopengis/member/join.php"
+                              >Join</a
+                            >
+                          </li>
+                          <li>
+                            <a
+                              href="http://unopengis.org/unopengis/member/privacy.php"
+                              >Privacy</a
+                            >
+                          </li>
+                          <li>
+                            <a
+                              href="http://unopengis.org/unopengis/member/terms.php"
+                              >Terms</a
+                            >
+                          </li>
+                          <li>
+                            <a
+                              href="http://unopengis.org/unopengis/member/copyright.php"
+                              >Copyright</a
+                            >
+                          </li>
+                          <li>
+                            <a
+                              href="http://unopengis.org/unopengis/member/mypage.php"
+                              >Mypage</a
+                            >
+                          </li>
+                        </ul>
+                      </li>
+                    </ul>
+                    <article class="m-right-bg posR" style="height: 6797px">
+                      <a href="javascript:;" class="m-depth-close"
+                        ><img
+                          src="./UN Open GIS_files/btn_close_gnb.png"
+                          alt="메뉴닫기"
+                      /></a>
+                    </article>
+                  </article>
+                </article>
+              </article>
+              <!-- End of the mobile version of the header -->
+            </article>
+          </article>
+        </header>
+      </div>
+      <section id="content">
+        <article class="mv-wrap">
+          <article class="mv-con w1140 clear">
+            <article class="left">
+              <article class="mv-slide">
+                <div class="bx-wrapper" style="max-width: 100%">
+                  <!-- Showing Slide 1 of 8 usinig bxSlider jQuery Plugin-->
+                  <div
+                    class="bx-viewport"
+                    style="
+                      width: 100%;
+                      overflow: hidden;
+                      position: relative;
+                      height: 664px;
+                    "
+                  >
+                    <ul
+                      class="mv"
+                      style="
+                        width: 1215%;
+                        position: relative;
+                        transition-duration: 0.5s;
+                        transform: translate3d(-5810px, 0px, 0px);
+                      "
+                    >
+                      <li
+                        style="
+                          float: left;
+                          list-style: none;
+                          position: relative;
+                          width: 830px;
+                        "
+                        class="bx-clone"
+                      >
+                        <!-- <a href="BP_3.html"
+                          > -->
+                          <img src="./UN Open GIS_files/1572930229-1.jpg" />
+                          <p>
+                            QGIS used by Malakal GIS Team in the United Nations
+                            Mission in South Sudan (UNMISS)
+                          </p></a
+                        >
+                      </li>
+                      <li
+                        style="
+                          float: left;
+                          list-style: none;
+                          position: relative;
+                          width: 830px;
+                        "
+                      >
+                        <!-- <a
+                          href="http://unopengis.org/unopengis/resources/resources03.php?id=resources03&amp;notice_id=&amp;s=&amp;tot=&amp;search=&amp;search_cond=&amp;no=22&amp;print_no=22&amp;exec=view&amp;npop=&amp;sort=&amp;desc=&amp;search_cat_no="
+                          > -->
+                          <img src="./UN Open GIS_files/1665648794-1.jpg" />
+                          <p>2022 FOSS4G Keynote Speech</p></a
+                        >
+                      </li>
+                      <li
+                        style="
+                          float: left;
+                          list-style: none;
+                          position: relative;
+                          width: 830px;
+                        "
+                      >
+                        <!-- <a
+                          href="http://unopengis.org/unopengis/news/news.php?exec=view&amp;no=14"
+                          > -->
+                          <img src="./UN Open GIS_files/1665711931-1.jpg" />
+                          <p>
+                            2022 UN Open GIS Initaitive Workshop in Firenze,
+                            Italy
+                          </p></a
+                        >
+                      </li>
+                      <li
+                        style="
+                          float: left;
+                          list-style: none;
+                          position: relative;
+                          width: 830px;
+                        "
+                      >
+                        <!-- <a
+                          href="http://unopengis.org/unopengis/call/call01.php?exec=view&amp;no=12"
+                          > -->
+                          <img src="./UN Open GIS_files/1656552782-1.png" />
+                          <p>
+                            WG5: GeoAI Challenge for Cropland Mapping with
+                            Satellite Imagery curated by FAO
+                          </p></a
+                        >
+                      </li>
+                      <li
+                        style="
+                          float: left;
+                          list-style: none;
+                          position: relative;
+                          width: 830px;
+                        "
+                      >
+                        <!-- <a
+                          href="http://unopengis.org/unopengis/news/news.php?exec=view&amp;no=12"
+                          > -->
+                          <img src="./UN Open GIS_files/1647853698-1.png" />
+                          <p>
+                            'UN Live Map' for the 'Digital Twin of UN Camp',
+                            built by using OpenDroneMap
+                          </p></a
+                        >
+                      </li>
+                      <li
+                        style="
+                          float: left;
+                          list-style: none;
+                          position: relative;
+                          width: 830px;
+                        "
+                      >
+                        <img src="./UN Open GIS_files/1647848198-1.png" />
+                        <p>Goal of UN Open GIS Initiative</p>
+                      </li>
+                      <li
+                        style="
+                          float: left;
+                          list-style: none;
+                          position: relative;
+                          width: 830px;
+                        "
+                      >
+                        <!-- <a
+                          href="http://unopengis.org/unopengis/resources/resources03.php?exec=view&amp;no=18"
+                          > -->
+                          <img src="./UN Open GIS_files/1647484678-1.png" />
+                          <p>
+                            Download a Quick Reference Guide for UN Mappers
+                          </p></a
+                        >
+                      </li>
+                      <li
+                        style="
+                          float: left;
+                          list-style: none;
+                          position: relative;
+                          width: 830px;
+                        "
+                      >
+                        <a
+                          href="https://www.un.org/geospatial/mapsgeo/webservices"
+                          ><img src="./UN Open GIS_files/1647584817-1.png" />
+                          <p>
+                            'Carto Tile' web service provided by the UN
+                            Geospatial and powered by UN Open GIS Initiative
+                          </p></a
+                        >
+                      </li>
+                      <li
+                        style="
+                          float: left;
+                          list-style: none;
+                          position: relative;
+                          width: 830px;
+                        "
+                      >
+                        <!-- <a
+                          href="http://unopengis.org/unopengis/news/news.php?id=news&amp;no=10&amp;exec=view&amp;npop="
+                          target="_blank"
+                          > -->
+                          <img src="./UN Open GIS_files/1635502040-1.jpg" />
+                          <p>Digital Twin of Open Drone Map</p></a
+                        >
+                      </li>
+                      <li
+                        style="
+                          float: left;
+                          list-style: none;
+                          position: relative;
+                          width: 830px;
+                        "
+                      >
+                        <!-- <a
+                          href="http://krihs11.gabia.io/unopengis/news/news.php?exec=view&amp;no=9"
+                          > -->
+                          <img src="./UN Open GIS_files/1637042193-1.jpg" />
+                          <p>UNMISS Geo Story Map Pilot Project</p></a
+                        >
+                      </li>
+                      <!-- <li
+                        style="
+                          float: left;
+                          list-style: none;
+                          position: relative;
+                          width: 830px;
+                        "
+                      >
+                        <a
+                          href="http://krihs11.gabia.io/unopengis/best/best01.php?id=best01&amp;notice_id=&amp;s=&amp;tot=&amp;search=&amp;search_cond=&amp;no=1&amp;print_no=1&amp;exec=view&amp;npop=&amp;sort=&amp;desc=&amp;search_cat_no="
+                          >
+                          <img src="./UN Open GIS_files/1572930229-1.jpg" />
+                          <p>
+                            QGIS used by Malakal GIS Team in the United Nations
+                            Mission in South Sudan (UNMISS)
+                          </p></a
+                        >
+                      </li> -->
+                      <!--
+									<li>
+										<img src="../img/mv-img01.jpg" alt="사진">
+										<p>UN Open GIS CI</p>
+									</li>
+									<li>
+										<a href="http://krihs11.gabia.io/unopengis/best/best01.php?id=best01&notice_id=&s=&tot=&search=&search_cond=&no=1&print_no=1&exec=view&npop=&sort=&desc=&search_cat_no="><img src="../img/mv-img02.jpg" alt="사진"></a>
+										<p>QGIS in UNMISS (Malakal GIS Team)</p>
+									</li>
+									<li>
+										<img src="../img/mv-img03.jpg" alt="사진">
+										<p>Training of Working Group 3</p>
+									</li>
+									<li>
+										<img src="../img/mv-img04.jpg" alt="사진">
+										<p>Training of Working Group 3</p>
+									</li>
+									<li>
+										<img src="../img/mv-img05.jpg" alt="사진">
+										<p>4th UN Open GIS Workshop</p>
+									</li>
+									<li>
+										<img src="../img/mv-img06.jpg" alt="사진">
+										<p>4th UN Open GIS Workshop-WG2</p>
+									</li>
+									<li>
+										<img src="../img/mv-img07.jpg" alt="사진">
+										<p>FOSS4G2019</p>
+									</li>
+									-->
+                      <!-- <li
+                        style="
+                          float: left;
+                          list-style: none;
+                          position: relative;
+                          width: 830px;
+                        "
+                        class="bx-clone"
+                      >
+                        <a
+                          href="http://unopengis.org/unopengis/resources/resources03.php?id=resources03&amp;notice_id=&amp;s=&amp;tot=&amp;search=&amp;search_cond=&amp;no=22&amp;print_no=22&amp;exec=view&amp;npop=&amp;sort=&amp;desc=&amp;search_cat_no="
+                          >
+                          <img src="./UN Open GIS_files/1665648794-1.jpg" />
+                          <p>2022 FOSS4G Keynote Speech</p></a
+                        >
+                      </li> -->
+                    </ul>
+                  </div>
+                  <div class="bx-controls bx-has-pager">
+                    <div class="bx-pager bx-default-pager">
+                      <div class="bx-pager-item">
+                        <span
+                          data-slide-index="0"
+                          class="bx-pager-link"
+                          >1</span>
+                        >
+                      </div>
+                      <div class="bx-pager-item">
+                        <span
+                          data-slide-index="1"
+                          class="bx-pager-link"
+                          >2</span>
+                        >
+                      </div>
+                      <div class="bx-pager-item">
+                        <span
+                          data-slide-index="2"
+                          class="bx-pager-link"
+                          >3</span>
+                        >
+                      </div>
+                      <div class="bx-pager-item">
+                        <span
+                          data-slide-index="3"
+                          class="bx-pager-link"
+                          >4</span>
+                        >
+                      </div>
+                      <div class="bx-pager-item">
+                        <span
+                          data-slide-index="4"
+                          class="bx-pager-link"
+                          >5</span>
+                        >
+                      </div>
+                      <div class="bx-pager-item">
+                        <span
+                          data-slide-index="5"
+                          class="bx-pager-link"
+                          >6</span>
+                        >
+                      </div>
+                      <div class="bx-pager-item">
+                        <span
+                          data-slide-index="6"
+                          class="bx-pager-link active"
+                          >7</span>
+                        >
+                      </div>
+                      <div class="bx-pager-item">
+                        <span
+                          data-slide-index="7"
+                          class="bx-pager-link"
+                          >8</span>
+                        >
+                      </div>
+                      <div class="bx-pager-item">
+                        <span
+                          data-slide-index="8"
+                          class="bx-pager-link"
+                          >9</span>
+                        >
+                      </div>
+                      <div class="bx-pager-item">
+                        <span
+                          data-slide-index="9"
+                          class="bx-pager-link"
+                          >10</span> 
+                        >
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </article>
+            </article>
+            <article class="right">
+              <article class="mv-nav">
+                <p>LATEST UPDATES</p>
+                <ul>
+                  <li>
+                    <a
+                      href="http://unopengis.org/unopengis/resources/resources03.php?exec=view&amp;no=23"
+                      ><u>·</u
+                      ><span
+                        >Working Groups of UN Open GIS Initiative (Feb
+                        2024)</span
+                      ></a
+                    >
+                  </li>
+                  <li>
+                    <a
+                      href="http://unopengis.org/unopengis/call/call01.php?exec=view&amp;no=15"
+                      ><u>·</u
+                      ><span
+                        >[JOB-MINUSMA] ASSOCIATE DATA SCIENTIST, P2</span
+                      ></a
+                    >
+                  </li>
+                  <li>
+                    <a
+                      href="http://unopengis.org/unopengis/call/call01.php?exec=view&amp;no=14"
+                      ><u>·</u
+                      ><span
+                        >[JOB-UN Mappers] Social Media Manager and Interns</span
+                      ></a
+                    >
+                  </li>
+                  <li>
+                    <a
+                      href="http://unopengis.org/unopengis/news/news.php?exec=view&amp;no=15"
+                      ><u>·</u
+                      ><span
+                        >UN Maps conference in Valencia, Spain (6 - 10 March
+                        2023)</span
+                      ></a
+                    >
+                  </li>
+                  <li>
+                    <a
+                      href="http://unopengis.org/unopengis/call/call01.php?exec=view&amp;no=13"
+                      ><u>·</u
+                      ><span
+                        >[JOB-FAO] Information Technology Officer (Geospatial
+                        Analysis, Data Visualization), P2 at FAO (Rome,
+                        Italy)</span
+                      ></a
+                    >
+                  </li>
+                  <!-- <li><a href="latest_01.php" target="_blank"><u>·</u><span>4th UN Open GIS Workshop</span></a></li>
+									<li><a href="latest_02.php" target="_blank"><u>·</u><span>Tutorial of Spiral 3</span></a></li> -->
+                  <!-- <li><a href="/unopengis/resources/resources02.php?id=resources02&no=3&exec=view"><u>·</u><span>Presentations of 4th UN Open GIS Initiative Workshop - 3</span></a></li>
+									<li><a href="/unopengis/resources/resources02.php?id=resources02&no=2&exec=view"><u>·</u><span>Presentations of 4th UN Open GIS Initiative Workshop - 2</span></a></li>
+									<li><a href="/unopengis/resources/resources02.php?id=resources02&no=1&exec=view"><u>·</u><span>Presentations of 4th UN Open GIS Initiative Workshop - 1</span></a></li>
+									<li><a href="../img/4th UN Open GIS Workshop.pdf" target="_blank"><u>·</u><span>4th UN Open GIS Workshop</span></a></li>
+									<li><a href="../img/Tutorial of Spiral 3.pdf" target="_blank"><u>·</u><span>Tutorial of Working Group 3</span></a></li> -->
+                </ul>
+              </article>
+              <article class="mv-nav">
+                <p><a>CALL FOR PARTICIPATION</a></p>
+                <a> </a>
+                <ul>
+                  <a> </a>
+                  <li>
+                    <a></a
+                    ><a
+                      href="http://unopengis.org/unopengis/call/call01.php?exec=view&amp;no=15"
+                      ><u>·</u
+                      ><span
+                        >[JOB-MINUSMA] ASSOCIATE DATA SCIENTIST, P2</span
+                      ></a
+                    >
+                  </li>
+                  <li>
+                    <a
+                      href="http://unopengis.org/unopengis/call/call01.php?exec=view&amp;no=14"
+                      ><u>·</u
+                      ><span
+                        >[JOB-UN Mappers] Social Media Manager and Interns</span
+                      ></a
+                    >
+                  </li>
+                  <li>
+                    <a
+                      href="http://unopengis.org/unopengis/call/call01.php?exec=view&amp;no=13"
+                      ><u>·</u
+                      ><span
+                        >[JOB-FAO] Information Technology Officer (Geospatial
+                        Analysis, Data Visualization), P2 at FAO (Rome,
+                        Italy)</span
+                      ></a
+                    >
+                  </li>
+                  <li>
+                    <a
+                      href="http://unopengis.org/unopengis/call/call01.php?exec=view&amp;no=12"
+                      ><u>·</u
+                      ><span
+                        >Geo-AI Challenge for Cropland mapping with satellite
+                        imagery</span
+                      ></a
+                    >
+                  </li>
+                  <!--li><a href="javascript:;"><u>·</u><span>Call for experts to assess Spiral 1</span></a></li>
+									<li><a href="javascript:;"><u>·</u><span>Call for joining in 3rd UN Open GIS <br />Workshop</span></a></li>
+									<li><a href="javascript:;"><u>·</u><span>Call for experts to assess Spiral 1</span></a></li>
+									<li><a href="javascript:;"><u>·</u><span>Call for joining in 3rd UN Open GIS <br />Workshop</span></a></li-->
+                </ul>
+              </article>
+            </article>
+          </article>
+        </article>
+        <article class="main01-wrap">
+          <article class="main01-con w1140">
+            <article class="main01-tit">
+              <p>IN FOCUS</p>
+            </article>
+            <article class="main01-in clear">
+              <div class="main01-box">
+                <div
+                  class="twitter-timeline twitter-timeline-rendered"
+                  style="
+                    display: flex;
+                    width: 364px;
+                    max-width: 100%;
+                    margin-top: 0px;
+                    margin-bottom: 0px;
+                  "
+                >
+                  <iframe
+                    id="twitter-widget-0"
+                    scrolling="no"
+                    frameborder="0"
+                    allowtransparency="true"
+                    allowfullscreen="true"
+                    class=""
+                    title="Twitter Timeline"
+                    src="./UN Open GIS_files/UNopenGIS.html"
+                    style="
+                      position: static;
+                      visibility: visible;
+                      width: 364px;
+                      height: 405px;
+                      display: block;
+                      flex-grow: 1;
+                    "
+                  ></iframe>
+                </div>
+                <script
+                  async=""
+                  src="./UN Open GIS_files/widgets.js"
+                  charset="utf-8"
+                ></script>
+              </div>
+              <!--a href="/unopengis/best/best01.php?exec=view&no=3" class="main01-box"-->
+              <article class="main01-box2">
+                <article class="main01-img">
+                  <a
+                    href="BP_1.html"
+                    ><img
+                      src="./UN Open GIS_files/Uploadify_202002121349058190.jpg"
+                      alt="[Best Practice] Mapping Refugee Settlements by using PulseSatellite"
+                  /></a>
+                </article>
+                <article class="main01-txt">
+                  <p>
+                    <a
+                      href="BP_1.html"
+                      >[Best Practice] Mapping Refugee Settlements by using
+                      PulseSatellite</a
+                    >
+                  </p>
+                  <span
+                    ><a
+                      href="BP_1.html"
+                      >Figure1. Refugee Camp mapping with using
+                      PulseSatelliteCounting and classifying structures in a
+                      refugee settlement is a common analysis task for
+                      humanitarian agencies. In practice, this is currently
+                      manually done by human expert analysts using satel…</a
+                    ></span
+                  >
+                  <a
+                    href="BP_1.html"
+                    class="more"
+                    >MORE<img
+                      src="./UN Open GIS_files/main02-arrow.png"
+                      alt="MORE 화살표"
+                  /></a>
+                </article>
+              </article>
+              <!--/a-->
+              <!--a href="/unopengis/best/best01.php?exec=view&no=2" class="main01-box"-->
+              <article class="main01-box2">
+                <article class="main01-img">
+                  <a
+                    href="BP_2.html"
+                    ><img
+                      src="./UN Open GIS_files/201912201932569846.jpg"
+                      alt="[Best Practice] Implementing the UN Open GIS Initiative in United Nations Mission in South Sudan"
+                  /></a>
+                </article>
+                <article class="main01-txt">
+                  <p>
+                    <a
+                      href="BP_2.html"
+                      >[Best Practice] Implementing the UN Open GIS Initiative
+                      in United Nations Mission in South Sudan</a
+                    >
+                  </p>
+                  <span
+                    ><a
+                      href="BP_2.html"
+                      >Implementing the UN Open GIS Initiative in United Nations
+                      Mission in South Sudan By Majur Achiew (GIS Assistant) and
+                      Remi Kouakou (GIS Officer), UNMISS Following the UN Open
+                      GIS training course for QGIS and PostGIS, which was
+                      contributed by the UN…</a
+                    ></span
+                  >
+                  <a
+                    href="BP_2.html"
+                    class="more"
+                    >MORE<img
+                      src="./UN Open GIS_files/main02-arrow.png"
+                      alt="MORE 화살표"
+                  /></a>
+                </article>
+              </article>
+              <!--/a-->
+              <!--a href="javascript:;" class="main01-box">
+								<article class="main01-img">
+									<img src="../img/main01-img02.jpg" alt="UN Open GIS Initiative">
+								</article>
+								<article class="main01-txt">
+									<p>UN Open GIS Initiative</p>
+									<span>UN Open GIS initiative is an ongoing Partnership Initiative for Technology in Peacekeeping of UN Department of Operational Support. and was established in March 2016. “UN Open GIS” aims to leverage free and open source-based geospatial technologies in support of UN peace operations. GIS-related think tanks at the event identified the potential benefits of open source applications for use by the field as well as the solutions</span>
+								</article>
+							</a>
+							<a href="javascript:;" class="main01-box">
+								<article class="main01-img">
+									<img src="../img/main01-img03.jpg" alt="UN Open GIS Initiative">
+								</article>
+								<article class="main01-txt">
+									<p>UN Open GIS Initiative</p>
+									<span>UN Open GIS initiative is an ongoing Partnership Initiative for Technology in Peacekeeping of UN Department of Operational Support. and was established in March 2016. “UN Open GIS” aims to leverage free and open source-based geospatial technologies in support of UN peace operations. GIS-related think tanks at the event identified the potential benefits of open source applications for use by the field as well as the solutions</span>
+								</article>
+							</a-->
+            </article>
+          </article>
+        </article>
+        <article class="main02-wrap">
+          <article class="main02-con w1140">
+            <article class="main02-in clear">
+              <article
+                class="main02-box clear"
+                onclick="location.href='1572933278-2.pdf'"
+                style="cursor: pointer"
+              >
+                <article class="main02-txt">
+                  <p>About Us</p>
+                  <span
+                    >UN Open GIS initiative is to identify and develop an Open
+                    Source GIS bundle that meets the ….</span
+                  >
+                  <a href="1572933278-2.pdf"
+                    >MORE<img
+                      src="./UN Open GIS_files/main02-arrow.png"
+                      alt="MORE 화살표"
+                  /></a>
+                </article>
+                <article class="main02-img">
+                  <img
+                    src="./UN Open GIS_files/main02-img01_1.jpg"
+                    alt="about us 이미지"
+                  />
+                </article>
+              </article>
+              <article
+                class="main02-box clear"
+                onclick="location.href='Governance.html'"
+                style="cursor: pointer"
+              >
+                <article class="main02-txt">
+                  <p>Governance Structure</p>
+                  <span
+                    >UN Open GIS initiative consists of Co-Chairs, Secretariat
+                    Office, Technical Advisory Group, Requirement Advisory Group
+                    and four...</span
+                  >
+                  <a href="Governance.html"
+                    >MORE<img
+                      src="./UN Open GIS_files/main02-arrow.png"
+                      alt="MORE 화살표"
+                  /></a>
+                </article>
+                <article class="main02-img">
+                  <img
+                    src="./UN Open GIS_files/main02-img02_1.jpg"
+                    alt="Governance Structure 이미지"
+                  />
+                </article>
+              </article>
+              <!--article class="main02-box clear">
+								<article class="main02-txt">
+									<p>Members</p>
+									<span>Members of UN Open GIS will be introduced in detail.</span>
+									<a href="/unopengis/about/about03.php">MORE<img src="../img/main02-arrow.png" alt="MORE 화살표"></a>
+								</article>
+								<article class="main02-img">
+									<img src="../img/main02-img03.jpg" alt="Members 이미지">
+								</article>
+							</article>
+							<article class="main02-box clear">
+								<article class="main02-txt">
+									<p>Contacts</p>
+									<span>We will provide detailed contact and address information for UN Open GIS.</span>
+									<a href="/unopengis/about/about04.php">MORE<img src="../img/main02-arrow.png" alt="MORE 화살표"></a>
+								</article>
+								<article class="main02-img">
+									<img src="../img/main02-img04.jpg" alt="Contacts 이미지">
+								</article>
+							</article-->
+            </article>
+          </article>
+        </article>
+        <!--article class="main03-wrap">
+					<article class="main03-con w1140">
+						<article class="main03-in clear">
+							<article class="main03-box">
+								<p>RELATED LINKS</p>
+								<ul>
+									<li><a href="javascript:;"><u>·</u><span>UN Homepage</span></a></li>
+									<li><a href="javascript:;"><u>·</u><span>UN DOS</span></a></li>
+									<li><a href="javascript:;"><u>·</u><span>Geo4All</span></a></li>
+									<li><a href="javascript:;"><u>·</u><span>OSGeo</span></a></li>
+									<li><a href="javascript:;"><u>·</u><span>(TBD) others</span></a></li>
+								</ul>
+							</article>
+							<article class="main03-box">
+								<p>Multimedia</p>
+								<ul>
+									<li><a href="javascript:;"><u>·</u><span>Newsletter</span></a></li>
+									<li><a href="../resources/resources04.php"><u>·</u><span>Videos</span></a></li>
+									<li><a href="../photo/photo.php"><u>·</u><span>Photos</span></a></li>
+								</ul>
+							</article>
+							<article class="main03-box">
+								<p>RELATED LINKS</p>
+								<ul>
+									<li><a href="javascript:;"><u>·</u><span>UN Homepage</span></a></li>
+									<li><a href="javascript:;"><u>·</u><span>UN DOS</span></a></li>
+									<li><a href="javascript:;"><u>·</u><span>Geo4All</span></a></li>
+									<li><a href="javascript:;"><u>·</u><span>OSGeo</span></a></li>
+									<li><a href="javascript:;"><u>·</u><span>(TBD) others</span></a></li>
+								</ul>
+							</article>
+						</article>
+					</article>
+				</article-->
+      </section>
+      <link href="./UN Open GIS_files/icon" rel="stylesheet" />
+      <style>
+        .material-icons {
+          font-family: "Material Icons";
+          font-weight: normal;
+          font-style: normal;
+          font-size: 24px; /* Preferred icon size */
+          display: inline-block;
+          line-height: 1;
+          text-transform: none;
+          letter-spacing: normal;
+          word-wrap: normal;
+          white-space: nowrap;
+          direction: ltr;
+
+          /* Support for all WebKit browsers. */
+          -webkit-font-smoothing: antialiased;
+          /* Support for Safari and Chrome. */
+          text-rendering: optimizeLegibility;
+
+          /* Support for Firefox. */
+          -moz-osx-font-smoothing: grayscale;
+
+          /* Support for IE. */
+          font-feature-settings: "liga";
+        }
+      </style>
+      <div class="reset">
+        <footer id="footer">
+          <article class="foot-wrap">
+            <article class="foot-con w1140">
+              <article class="foot-nav">
+                <a href="contact.html"
+                  >CONTACT</a
+                >
+                <span>·</span>
+                <a href="http://unopengis.org/unopengis/member/copyright.php"
+                  >COPYRIGHT</a
+                >
+                <span>·</span>
+                <a href="http://unopengis.org/unopengis/member/privacy.php"
+                  >PRIVACY NOTICE</a
+                >
+                <span>·</span>
+                <a href="http://unopengis.org/unopengis/member/terms.php"
+                  >TERMS OF USE</a
+                >
+                <span>·</span>
+                <a href="http://unopengis.org/sboard/admin.php">
+                  <div
+                    style="
+                      background-color: #ddd;
+                      border-radius: 100%;
+                      width: 30px;
+                      height: 30px;
+                      line-height: 30px;
+                      text-align: center;
+                      position: relative;
+                      top: -10px;
+                    "
+                  >
+                    <span
+                      class="material-icons"
+                      style="font-size: 14px; vertical-align: middle; margin: 0"
+                      >lock</span
+                    >
+                  </div>
+                </a>
+              </article>
+              <article class="foot-adr">
+                <p>
+                  UN Open GIS Initiative<span>|</span><br class="m-block" />ADD
+                  : 304E 45th Street, New York City, United
+                  States
+                </p>
+                <p>
+                  UN Open GIS Secretariat Office<span>|</span
+                  ><br class="m-block" />ADD : 5 Gukchaegyeonguwon-ro,
+                  Sejong-si, 30147, South Korea<span>|</span
+                  ><br class="m-block" />TEL : +82-44-960-0405<!-- +82-44-960-0178 --><span
+                    class="m-on"
+                    >|</span
+                  >FAX : +82-44-211-4772<span>|</span
+                  ><br class="m-block" />E-mail : UNOpenGIS@krihs.re.kr
+                </p>
+                <span
+                  >COPYRIGHT (C) 2019 UN OPEN GIS INITIATIVE ALL RIGHTS
+                  RESERVED.
+                </span>
+              </article>
+            </article>
+          </article>
+        </footer>
+      </div>
+    </section>
+    <!-- sboard 로그분석 -->
+    <iframe
+      src="./UN Open GIS_files/weblog.html"
+      frameborder="0"
+      style="
+        width: 0;
+        height: 0;
+        border: 0;
+        position: absolute;
+        top: -9999px;
+        left: -9999px;
+        z-index: -1;
+      "
+    ></iframe>
+
+    <iframe
+      scrolling="no"
+      frameborder="0"
+      allowtransparency="true"
+      src="./UN Open GIS_files/widget_iframe.2f70fb173b9000da126c79afe2098f02.html"
+      title="Twitter settings iframe"
+      style="display: none"
+    ></iframe
+    ><iframe
+      id="ZcxvbPdQ"
+      frameborder="0"
+      src="./UN Open GIS_files/translateSandbox(1).html"
+      style="width: 0px; height: 0px; display: none"
+    ></iframe
+    ><iframe
+      id="rufous-sandbox"
+      scrolling="no"
+      frameborder="0"
+      allowtransparency="true"
+      allowfullscreen="true"
+      style="
+        position: absolute;
+        visibility: hidden;
+        display: none;
+        width: 0px;
+        height: 0px;
+        padding: 0px;
+        border: none;
+      "
+      title="Twitter analytics iframe"
+      src="./UN Open GIS_files/saved_resource(1).html"
+    ></iframe>
+  </body>
+  <grammarly-desktop-integration data-grammarly-shadow-root="true"
+    ><template shadowrootmode="open"
+      ><style>
+        div.grammarly-desktop-integration {
+          position: absolute;
+          width: 1px;
+          height: 1px;
+          padding: 0;
+          margin: -1px;
+          overflow: hidden;
+          clip: rect(0, 0, 0, 0);
+          white-space: nowrap;
+          border: 0;
+          -moz-user-select: none;
+          -webkit-user-select: none;
+          -ms-user-select: none;
+          user-select: none;
+        }
+
+        div.grammarly-desktop-integration:before {
+          content: attr(data-content);
+        }
+      </style>
+      <div
+        aria-label="grammarly-integration"
+        role="group"
+        tabindex="-1"
+        class="grammarly-desktop-integration"
+        data-content='{"mode":"limited","isActive":false,"isUserDisabled":false}'
+      ></div></template
+  ></grammarly-desktop-integration>
+</html>
