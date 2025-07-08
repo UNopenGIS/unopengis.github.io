@@ -35,7 +35,7 @@
       <script src="http://css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js"></script>
     <![endif]-->
     <link
-      href="./Overvierw_files/font-awesome.min.css"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
       rel="stylesheet"
       integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN"
       crossorigin="anonymous"
@@ -55,387 +55,387 @@
     <script src="./Overvierw_files/layerPopup.js"></script>
 
     <script language="JavaScript">
-      <!--
-      var driver = "MYSQL";
-      var baseDir = "../../sboard/";
-      var fpWin = null;
+      // <!--
+      // var driver = "MYSQL";
+      // var baseDir = "../../sboard/";
+      // var fpWin = null;
 
-      // browser Check
-      var is = null;
-      function BrowserCheck() {
-        this.ie = document.all ? 1 : 0;
-        this.ns = document.getElementById && !document.all ? 1 : 0;
-      }
-      is = new BrowserCheck();
+      // // browser Check
+      // var is = null;
+      // function BrowserCheck() {
+      //   this.ie = document.all ? 1 : 0;
+      //   this.ns = document.getElementById && !document.all ? 1 : 0;
+      // }
+      // is = new BrowserCheck();
 
-      function getObject(objStr, tier) {
-        var docStr = "";
-        var obj = null;
-        if (typeof tier == "string") docStr = tier + "." + "document";
-        else docStr = "document";
-        if (is.ie) {
-          obj = eval(docStr + ".all['" + objStr + "']"); // IE
-        } else if (is.ns) {
-          obj = eval(docStr + ".getElementById('" + objStr + "');"); // NS
-          if (!obj) {
-            obj = eval(docStr + ".getElementsByName('" + objStr + "')[0];"); // NS
-          }
-        }
-        return obj;
-      }
+      // function getObject(objStr, tier) {
+      //   var docStr = "";
+      //   var obj = null;
+      //   if (typeof tier == "string") docStr = tier + "." + "document";
+      //   else docStr = "document";
+      //   if (is.ie) {
+      //     obj = eval(docStr + ".all['" + objStr + "']"); // IE
+      //   } else if (is.ns) {
+      //     obj = eval(docStr + ".getElementById('" + objStr + "');"); // NS
+      //     if (!obj) {
+      //       obj = eval(docStr + ".getElementsByName('" + objStr + "')[0];"); // NS
+      //     }
+      //   }
+      //   return obj;
+      // }
 
-      function getOnlyURL(_url) {
-        var url = _url;
-        var e = url.indexOf("?");
-        if (e > 0) url = url.substring(0, e);
-        return url;
-      }
-      //-->
+      // function getOnlyURL(_url) {
+      //   var url = _url;
+      //   var e = url.indexOf("?");
+      //   if (e > 0) url = url.substring(0, e);
+      //   return url;
+      // }
+      // //-->
     </script>
     <script language="JavaScript">
-      <!--
-      var poll_id = "";
-      var poll_exec = "";
+      // <!--
+      // var poll_id = "";
+      // var poll_exec = "";
 
-      // sucMode : '1' : 로그인 성공 메시지 출력
-      //			 '2' : 로그인후 윈도우 닫기
-      //			 '3' : 로그 아웃 스킨 표시 ( 기본 값 )
-      function loginPopup(
-        skinName,
-        width,
-        height,
-        left,
-        top,
-        scroll_yn,
-        sucMode,
-        successURL,
-        message
-      ) {
-        var url = "";
-        var bDir = "";
-        if (typeof baseDir != "undefined") bDir = baseDir;
-        if (typeof skinName == "undefined") skinName = "";
-        if (typeof sucMode == "undefined") sucMode = "1";
-        if (typeof successURL == "undefined") successURL = "";
-        if (typeof message == "undefined") message = "";
+      // // sucMode : '1' : 로그인 성공 메시지 출력
+      // //			 '2' : 로그인후 윈도우 닫기
+      // //			 '3' : 로그 아웃 스킨 표시 ( 기본 값 )
+      // function loginPopup(
+      //   skinName,
+      //   width,
+      //   height,
+      //   left,
+      //   top,
+      //   scroll_yn,
+      //   sucMode,
+      //   successURL,
+      //   message
+      // ) {
+      //   var url = "";
+      //   var bDir = "";
+      //   if (typeof baseDir != "undefined") bDir = baseDir;
+      //   if (typeof skinName == "undefined") skinName = "";
+      //   if (typeof sucMode == "undefined") sucMode = "1";
+      //   if (typeof successURL == "undefined") successURL = "";
+      //   if (typeof message == "undefined") message = "";
 
-        url =
-          bDir +
-          "dlogin.php?login_skin_name=" +
-          skinName +
-          "&suc_mode=" +
-          sucMode;
-        if (typeof id != "undefined") url += "&id=" + id;
-        if (typeof poll_id != "undefined") url += "&poll_id=" + poll_id;
+      //   url =
+      //     bDir +
+      //     "dlogin.php?login_skin_name=" +
+      //     skinName +
+      //     "&suc_mode=" +
+      //     sucMode;
+      //   if (typeof id != "undefined") url += "&id=" + id;
+      //   if (typeof poll_id != "undefined") url += "&poll_id=" + poll_id;
 
-        if (successURL != "") url += "&succ_url=" + encodeURI(successURL);
-        if (message != "") url += "&message=" + encodeURI(message);
-        url += "&lg=Y";
-        var loginWin = window.open(
-          url,
-          "loginWin",
-          "toolbar=no,menubar=no,resizable=no,scrollbars=" +
-            scroll_yn +
-            ",left=" +
-            left +
-            ",top=" +
-            top +
-            ",width=" +
-            width +
-            ",height=" +
-            height
-        );
-        loginWin.focus();
-      }
-      // skinName : 스킨명
-      // successURL : 성공시 이동할 경로명
-      function loginPage(skinName, successURL) {
-        var url = "";
-        var bDir = "";
-        if (typeof baseDir != "undefined") bDir = baseDir;
-        if (typeof skinName == "undefined") skinName = "";
-        if (typeof successURL == "undefined") successURL = "";
-        url =
-          bDir +
-          "dlogin.php?login_skin_name=" +
-          skinName +
-          "&suc_mode=4" +
-          "&succ_url=" +
-          escape(successURL);
-        var loginWin = (document.location.href = url);
-        loginWin.focus();
-      }
+      //   if (successURL != "") url += "&succ_url=" + encodeURI(successURL);
+      //   if (message != "") url += "&message=" + encodeURI(message);
+      //   url += "&lg=Y";
+      //   var loginWin = window.open(
+      //     url,
+      //     "loginWin",
+      //     "toolbar=no,menubar=no,resizable=no,scrollbars=" +
+      //       scroll_yn +
+      //       ",left=" +
+      //       left +
+      //       ",top=" +
+      //       top +
+      //       ",width=" +
+      //       width +
+      //       ",height=" +
+      //       height
+      //   );
+      //   loginWin.focus();
+      // }
+      // // skinName : 스킨명
+      // // successURL : 성공시 이동할 경로명
+      // function loginPage(skinName, successURL) {
+      //   var url = "";
+      //   var bDir = "";
+      //   if (typeof baseDir != "undefined") bDir = baseDir;
+      //   if (typeof skinName == "undefined") skinName = "";
+      //   if (typeof successURL == "undefined") successURL = "";
+      //   url =
+      //     bDir +
+      //     "dlogin.php?login_skin_name=" +
+      //     skinName +
+      //     "&suc_mode=4" +
+      //     "&succ_url=" +
+      //     escape(successURL);
+      //   var loginWin = (document.location.href = url);
+      //   loginWin.focus();
+      // }
 
-      function loginFormSubmit(myForm) {
-        var url = "";
-        if (typeof baseDir != "undefined") url = baseDir + "login_ok.php";
-        else url = "login_ok.php";
+      // function loginFormSubmit(myForm) {
+      //   var url = "";
+      //   if (typeof baseDir != "undefined") url = baseDir + "login_ok.php";
+      //   else url = "login_ok.php";
 
-        var first = true;
-        var suc_mode = "";
-        if (typeof myForm.suc_mode != "undefined") {
-          suc_mode = myForm.suc_mode.value;
-          if (suc_mode != "") {
-            url += "?suc_mode=" + suc_mode;
-            first = false;
-          }
-        }
+      //   var first = true;
+      //   var suc_mode = "";
+      //   if (typeof myForm.suc_mode != "undefined") {
+      //     suc_mode = myForm.suc_mode.value;
+      //     if (suc_mode != "") {
+      //       url += "?suc_mode=" + suc_mode;
+      //       first = false;
+      //     }
+      //   }
 
-        url += getLoginUrl(first);
-        if (typeof myForm.message != "undefined")
-          myForm.message.value = decodeURI(myForm.message.value);
-        if (typeof myForm.succ_url != "undefined")
-          myForm.succ_url.value = decodeURI(myForm.succ_url.value);
+      //   url += getLoginUrl(first);
+      //   if (typeof myForm.message != "undefined")
+      //     myForm.message.value = decodeURI(myForm.message.value);
+      //   if (typeof myForm.succ_url != "undefined")
+      //     myForm.succ_url.value = decodeURI(myForm.succ_url.value);
 
-        myForm.action = url;
+      //   myForm.action = url;
 
-        if (myForm.user_id.value == "") {
-          alert("ID를 입력해주세요.");
-          myForm.user_id.focus();
-          return false;
-        }
-        if (myForm.password.value == "") {
-          alert("Password를 입력해주세요.");
-          myForm.password.focus();
-          return false;
-        }
-        return true;
-      }
+      //   if (myForm.user_id.value == "") {
+      //     alert("ID를 입력해주세요.");
+      //     myForm.user_id.focus();
+      //     return false;
+      //   }
+      //   if (myForm.password.value == "") {
+      //     alert("Password를 입력해주세요.");
+      //     myForm.password.focus();
+      //     return false;
+      //   }
+      //   return true;
+      // }
 
-      function logout(myForm) {
-        var formMode = 1;
-        if (typeof myForm == "undefined") {
-          myForm = document.logoutForm;
-          formMode = 2;
-        }
-        var url = "";
-        if (typeof baseDir != "undefined") url = baseDir + "logout_ok.php";
-        else url = "logout_ok.php";
-        url += getLoginUrl(true);
-        if (typeof myForm.message != "undefined")
-          myForm.message.value = encodeURI(myForm.message.value);
-        if (typeof myForm.succ_url != "undefined")
-          myForm.succ_url.value = encodeURI(myForm.succ_url.value);
+      // function logout(myForm) {
+      //   var formMode = 1;
+      //   if (typeof myForm == "undefined") {
+      //     myForm = document.logoutForm;
+      //     formMode = 2;
+      //   }
+      //   var url = "";
+      //   if (typeof baseDir != "undefined") url = baseDir + "logout_ok.php";
+      //   else url = "logout_ok.php";
+      //   url += getLoginUrl(true);
+      //   if (typeof myForm.message != "undefined")
+      //     myForm.message.value = encodeURI(myForm.message.value);
+      //   if (typeof myForm.succ_url != "undefined")
+      //     myForm.succ_url.value = encodeURI(myForm.succ_url.value);
 
-        myForm.action = url;
+      //   myForm.action = url;
 
-        if (formMode == 1) return true;
-        else myForm.submit();
-      }
+      //   if (formMode == 1) return true;
+      //   else myForm.submit();
+      // }
 
-      function getLoginUrl(first) {
-        var url = "";
-        if (typeof id != "undefined" && id != "")
-          if (first) {
-            url += "?id=" + id;
-            first = false;
-          } else {
-            url += "&id=" + id;
-          }
-        if (typeof npop != "undefined" && npop != "")
-          if (first) {
-            url += "?npop=" + npop;
-            first = false;
-          } else {
-            url += "&npop=" + npop;
-          }
-        if (typeof exec != "undefined" && exec != "")
-          if (first) {
-            url += "?exec=" + exec;
-            first = false;
-          } else {
-            url += "&exec=" + exec;
-          }
-        if (typeof no != "undefined" && no != "")
-          if (first) {
-            url += "?no=" + no;
-            first = false;
-          } else {
-            url += "&no=" + no;
-          }
-        if (typeof s != "undefined" && s != "")
-          if (first) {
-            url += "?s=" + s;
-            first = false;
-          } else {
-            url += "&s=" + s;
-          }
+      // function getLoginUrl(first) {
+      //   var url = "";
+      //   if (typeof id != "undefined" && id != "")
+      //     if (first) {
+      //       url += "?id=" + id;
+      //       first = false;
+      //     } else {
+      //       url += "&id=" + id;
+      //     }
+      //   if (typeof npop != "undefined" && npop != "")
+      //     if (first) {
+      //       url += "?npop=" + npop;
+      //       first = false;
+      //     } else {
+      //       url += "&npop=" + npop;
+      //     }
+      //   if (typeof exec != "undefined" && exec != "")
+      //     if (first) {
+      //       url += "?exec=" + exec;
+      //       first = false;
+      //     } else {
+      //       url += "&exec=" + exec;
+      //     }
+      //   if (typeof no != "undefined" && no != "")
+      //     if (first) {
+      //       url += "?no=" + no;
+      //       first = false;
+      //     } else {
+      //       url += "&no=" + no;
+      //     }
+      //   if (typeof s != "undefined" && s != "")
+      //     if (first) {
+      //       url += "?s=" + s;
+      //       first = false;
+      //     } else {
+      //       url += "&s=" + s;
+      //     }
 
-        if (typeof poll_id != "undefined" && poll_id != "")
-          if (first) {
-            url += "?poll_id=" + poll_id;
-            first = false;
-          } else {
-            url += "&poll_id=" + poll_id;
-          }
-        if (typeof poll_exec != "undefined" && poll_exec != "")
-          if (first) {
-            url += "?poll_exec=" + poll_exec;
-            first = false;
-          } else {
-            url += "&poll_exec=" + poll_exec;
-          }
-        return url;
-      }
+      //   if (typeof poll_id != "undefined" && poll_id != "")
+      //     if (first) {
+      //       url += "?poll_id=" + poll_id;
+      //       first = false;
+      //     } else {
+      //       url += "&poll_id=" + poll_id;
+      //     }
+      //   if (typeof poll_exec != "undefined" && poll_exec != "")
+      //     if (first) {
+      //       url += "?poll_exec=" + poll_exec;
+      //       first = false;
+      //     } else {
+      //       url += "&poll_exec=" + poll_exec;
+      //     }
+      //   return url;
+      // }
 
-      function comfirmClick(argu1) {
-        if (
-          typeof opener != "undefined" &&
-          typeof opener.document == "object"
-        ) {
-          if (argu1 == "") {
-            opener.focus();
-            self.close();
-          } else {
-            document.location.replace(argu1);
-          }
-        } else {
-          if (argu1 == "") document.location.replace("/");
-          else document.location.replace(argu1);
-        }
-      }
-      var memberWin = null;
-      // mode : '1' : 팝업에서   회원 가입 페이지 열기
-      //        '2' : 현재창에서 회원 가입 페이지 열기
-      // successURL : 가입 성공시 이동 페이지
-      // width      : 팝업 윈도우 가로 크기
-      // height     : 팝업 윈도우 세로 크기
-      // scroll     : 팝업 윈도우 스크롤바 생성 여부 ( 'Y', 'N' )
-      function openMemberCB(
-        gubun,
-        mode,
-        successURL,
-        width,
-        height,
-        scroll,
-        user_id
-      ) {
-        if (typeof successURL == "undefined") successURL = "";
-        if (memberWin != null) memberWin.close();
-        var url = "";
-        if (typeof baseDir != "undefined") url = baseDir;
+      // function comfirmClick(argu1) {
+      //   if (
+      //     typeof opener != "undefined" &&
+      //     typeof opener.document == "object"
+      //   ) {
+      //     if (argu1 == "") {
+      //       opener.focus();
+      //       self.close();
+      //     } else {
+      //       document.location.replace(argu1);
+      //     }
+      //   } else {
+      //     if (argu1 == "") document.location.replace("/");
+      //     else document.location.replace(argu1);
+      //   }
+      // }
+      // var memberWin = null;
+      // // mode : '1' : 팝업에서   회원 가입 페이지 열기
+      // //        '2' : 현재창에서 회원 가입 페이지 열기
+      // // successURL : 가입 성공시 이동 페이지
+      // // width      : 팝업 윈도우 가로 크기
+      // // height     : 팝업 윈도우 세로 크기
+      // // scroll     : 팝업 윈도우 스크롤바 생성 여부 ( 'Y', 'N' )
+      // function openMemberCB(
+      //   gubun,
+      //   mode,
+      //   successURL,
+      //   width,
+      //   height,
+      //   scroll,
+      //   user_id
+      // ) {
+      //   if (typeof successURL == "undefined") successURL = "";
+      //   if (memberWin != null) memberWin.close();
+      //   var url = "";
+      //   if (typeof baseDir != "undefined") url = baseDir;
 
-        if (gubun == "insert") url += "member_register.php";
-        else if (gubun == "update") url += "member_register.php";
-        else if (gubun == "secession") url += "member_secession.php";
-        else if (gubun == "infor_search") url += "member_infor_search.php";
-        else if (gubun == "view") url += "member_view.php";
+      //   if (gubun == "insert") url += "member_register.php";
+      //   else if (gubun == "update") url += "member_register.php";
+      //   else if (gubun == "secession") url += "member_secession.php";
+      //   else if (gubun == "infor_search") url += "member_infor_search.php";
+      //   else if (gubun == "view") url += "member_view.php";
 
-        if (typeof id == "undefined") {
-          if (successURL != "") {
-            url += "?succ_url=" + escape(successURL);
-            if (gubun == "update") url += "&mexec=update";
-            else if (gubun == "secession") url += "&mode=" + mode;
-            else if (gubun == "infor_search") url += "&mode=" + mode;
-            else if (gubun == "view") url += "&user_id=" + user_id;
-          } else {
-            if (gubun == "update") url += "?mexec=update";
-            else if (gubun == "secession") url += "?mode=" + mode;
-            else if (gubun == "infor_search") url += "?mode=" + mode;
-            else if (gubun == "view") url += "?user_id=" + user_id;
-          }
-        } else {
-          if (successURL != "") {
-            url += "?id=" + id + "&succ_url=" + escape(successURL);
-          } else {
-            url += "?id=" + id;
-          }
-          if (gubun == "update") url += "&mexec=update";
-          else if (gubun == "secession") url += "&mode=" + mode;
-          else if (gubun == "infor_search") url += "&mode=" + mode;
-          else if (gubun == "view") url += "&user_id=" + user_id;
-        }
+      //   if (typeof id == "undefined") {
+      //     if (successURL != "") {
+      //       url += "?succ_url=" + escape(successURL);
+      //       if (gubun == "update") url += "&mexec=update";
+      //       else if (gubun == "secession") url += "&mode=" + mode;
+      //       else if (gubun == "infor_search") url += "&mode=" + mode;
+      //       else if (gubun == "view") url += "&user_id=" + user_id;
+      //     } else {
+      //       if (gubun == "update") url += "?mexec=update";
+      //       else if (gubun == "secession") url += "?mode=" + mode;
+      //       else if (gubun == "infor_search") url += "?mode=" + mode;
+      //       else if (gubun == "view") url += "?user_id=" + user_id;
+      //     }
+      //   } else {
+      //     if (successURL != "") {
+      //       url += "?id=" + id + "&succ_url=" + escape(successURL);
+      //     } else {
+      //       url += "?id=" + id;
+      //     }
+      //     if (gubun == "update") url += "&mexec=update";
+      //     else if (gubun == "secession") url += "&mode=" + mode;
+      //     else if (gubun == "infor_search") url += "&mode=" + mode;
+      //     else if (gubun == "view") url += "&user_id=" + user_id;
+      //   }
 
-        if (mode == "1") {
-          scroll = scroll == "Y" ? "yes" : "no";
-          var target = "";
-          if (gubun == "insert") target += "memberWin";
-          else if (gubun == "update") target += "memberWin";
-          else if (gubun == "secession") target += "secessWin";
-          else if (gubun == "infor_search") target += "inforsWin";
-          memberWin = window.open(
-            url,
-            target,
-            "toolbar=no,menubar=no,resizable=no,scrollbars=" +
-              scroll +
-              ",width=" +
-              width +
-              ",height=" +
-              height
-          );
-          memberWin.focus();
-        } else if (mode == "2") {
-          document.location.href = url;
-        }
-      }
+      //   if (mode == "1") {
+      //     scroll = scroll == "Y" ? "yes" : "no";
+      //     var target = "";
+      //     if (gubun == "insert") target += "memberWin";
+      //     else if (gubun == "update") target += "memberWin";
+      //     else if (gubun == "secession") target += "secessWin";
+      //     else if (gubun == "infor_search") target += "inforsWin";
+      //     memberWin = window.open(
+      //       url,
+      //       target,
+      //       "toolbar=no,menubar=no,resizable=no,scrollbars=" +
+      //         scroll +
+      //         ",width=" +
+      //         width +
+      //         ",height=" +
+      //         height
+      //     );
+      //     memberWin.focus();
+      //   } else if (mode == "2") {
+      //     document.location.href = url;
+      //   }
+      // }
 
-      function openMemberRegister(mode, successURL, width, height, scroll) {
-        if (typeof mode == "undefined" || mode == "") mode = "1";
-        if (mode == "1") {
-          if (typeof width == "undefined" || width == "")
-            width = member_register_popup_width;
-          if (typeof height == "undefined" || height == "")
-            height = member_register_popup_height;
-          if (typeof scroll == "undefined" || scroll == "") scroll = "Y";
-        }
-        openMemberCB("insert", mode, successURL, width, height, scroll);
-      }
+      // function openMemberRegister(mode, successURL, width, height, scroll) {
+      //   if (typeof mode == "undefined" || mode == "") mode = "1";
+      //   if (mode == "1") {
+      //     if (typeof width == "undefined" || width == "")
+      //       width = member_register_popup_width;
+      //     if (typeof height == "undefined" || height == "")
+      //       height = member_register_popup_height;
+      //     if (typeof scroll == "undefined" || scroll == "") scroll = "Y";
+      //   }
+      //   openMemberCB("insert", mode, successURL, width, height, scroll);
+      // }
 
-      function openMemberUpdate(mode, successURL, width, height, scroll) {
-        if (typeof mode == "undefined" || mode == "") mode = "1";
-        if (mode == "1") {
-          if (typeof width == "undefined" || width == "")
-            width = member_update_popup_width;
-          if (typeof height == "undefined" || height == "")
-            height = member_update_popup_height;
-          if (typeof scroll == "undefined" || scroll == "") scroll = "Y";
-        }
-        openMemberCB("update", mode, successURL, width, height, scroll);
-      }
+      // function openMemberUpdate(mode, successURL, width, height, scroll) {
+      //   if (typeof mode == "undefined" || mode == "") mode = "1";
+      //   if (mode == "1") {
+      //     if (typeof width == "undefined" || width == "")
+      //       width = member_update_popup_width;
+      //     if (typeof height == "undefined" || height == "")
+      //       height = member_update_popup_height;
+      //     if (typeof scroll == "undefined" || scroll == "") scroll = "Y";
+      //   }
+      //   openMemberCB("update", mode, successURL, width, height, scroll);
+      // }
 
-      function openMemberSecession(mode, successURL, width, height, scroll) {
-        if (typeof mode == "undefined" || mode == "") mode = "1";
-        if (mode == "1") {
-          if (typeof width == "undefined" || width == "")
-            width = member_secession_popup_width;
-          if (typeof height == "undefined" || height == "")
-            height = member_secession_popup_height;
-          if (typeof scroll == "undefined" || scroll == "") scroll = "Y";
-        }
-        openMemberCB("secession", mode, successURL, width, height, scroll);
-      }
+      // function openMemberSecession(mode, successURL, width, height, scroll) {
+      //   if (typeof mode == "undefined" || mode == "") mode = "1";
+      //   if (mode == "1") {
+      //     if (typeof width == "undefined" || width == "")
+      //       width = member_secession_popup_width;
+      //     if (typeof height == "undefined" || height == "")
+      //       height = member_secession_popup_height;
+      //     if (typeof scroll == "undefined" || scroll == "") scroll = "Y";
+      //   }
+      //   openMemberCB("secession", mode, successURL, width, height, scroll);
+      // }
 
-      function openMemberInforSearch(mode, successURL, width, height, scroll) {
-        if (typeof mode == "undefined" || mode == "") mode = "1";
-        if (mode == "1") {
-          if (typeof width == "undefined" || width == "")
-            width = member_infor_search_popup_width;
-          if (typeof height == "undefined" || height == "")
-            height = member_infor_search_popup_height;
-          if (typeof scroll == "undefined" || scroll == "") scroll = "Y";
-        }
-        openMemberCB("infor_search", mode, successURL, width, height, scroll);
-      }
+      // function openMemberInforSearch(mode, successURL, width, height, scroll) {
+      //   if (typeof mode == "undefined" || mode == "") mode = "1";
+      //   if (mode == "1") {
+      //     if (typeof width == "undefined" || width == "")
+      //       width = member_infor_search_popup_width;
+      //     if (typeof height == "undefined" || height == "")
+      //       height = member_infor_search_popup_height;
+      //     if (typeof scroll == "undefined" || scroll == "") scroll = "Y";
+      //   }
+      //   openMemberCB("infor_search", mode, successURL, width, height, scroll);
+      // }
 
-      function openMemberView(
-        user_id,
-        mode,
-        successURL,
-        width,
-        height,
-        scroll
-      ) {
-        if (typeof mode == "undefined" || mode == "") mode = "1";
-        if (mode == "1") {
-          if (typeof width == "undefined" || width == "")
-            width = member_view_popup_width;
-          if (typeof height == "undefined" || height == "")
-            height = member_view_popup_height;
-          if (typeof scroll == "undefined" || scroll == "") scroll = "Y";
-        }
-        openMemberCB("view", mode, successURL, width, height, scroll, user_id);
-      }
-      //-->
+      // function openMemberView(
+      //   user_id,
+      //   mode,
+      //   successURL,
+      //   width,
+      //   height,
+      //   scroll
+      // ) {
+      //   if (typeof mode == "undefined" || mode == "") mode = "1";
+      //   if (mode == "1") {
+      //     if (typeof width == "undefined" || width == "")
+      //       width = member_view_popup_width;
+      //     if (typeof height == "undefined" || height == "")
+      //       height = member_view_popup_height;
+      //     if (typeof scroll == "undefined" || scroll == "") scroll = "Y";
+      //   }
+      //   openMemberCB("view", mode, successURL, width, height, scroll, user_id);
+      // }
+      // //-->
     </script>
     <link rel="stylesheet" href="./Overvierw_files/main.css" />
   </head>
@@ -470,14 +470,14 @@
                 <article class="head-top">
                   <article class="head-top-in w1140 clear">
                     <article class="left">
-                      <a href="http://unopengis.org/unopengis/main/main.php">
+                      <a href="index.html">
                         <img
                           src="./Overvierw_files/logo.png"
                           alt="UN Open GIS 로고"
                         />
                       </a>
                     </article>
-                    <article class="right">
+                    <!-- <article class="right">
                       <a href="http://unopengis.org/unopengis/main/main.php"
                         >Home</a
                       >
@@ -489,112 +489,81 @@
                       <a href="http://unopengis.org/unopengis/member/mypage.php"
                         >MYPAGE</a
                       >
-                    </article>
+                    </article> -->
                   </article>
                 </article>
                 <article class="head-depth-wrap">
                   <article class="head-depth w1140">
                     <ul class="depth01 clear">
                       <li>
-                        <a
-                          href="http://unopengis.org/unopengis/about/about01.php"
-                          data-fullname=""
-                          >Overview</a
-                        >
+                        <a href="Overvierw.html" data-fullname="">Overview</a>
                         <ul class="depth02" style="">
                           <li>
-                            <a
-                              href="http://unopengis.org/unopengis/about/about01_01.php"
-                              data-fullname=""
+                            <a href="1572933278-2.pdf" data-fullname=""
                               >About Us</a
                             >
                           </li>
                           <li>
-                            <a
-                              href="http://unopengis.org/unopengis/about/about01_02.php"
-                              data-fullname=""
+                            <a href="Governance.html" data-fullname=""
                               >Governance Structure</a
                             >
                           </li>
                           <li>
-                            <a
-                              href="http://unopengis.org/unopengis/about/about05.php"
-                              data-fullname=""
-                              >Members</a
-                            >
+                            <a href="members.html" data-fullname="">Members</a>
                           </li>
                           <li>
-                            <a
-                              href="http://unopengis.org/unopengis/about/about01_03.php"
-                              data-fullname=""
+                            <a href="Overvierw.html#about01_03" data-fullname=""
                               >CI</a
                             >
                           </li>
                           <li>
-                            <a
-                              href="http://unopengis.org/unopengis/about/about04.php"
-                              data-fullname=""
+                            <a href="contact.html" data-fullname=""
                               >Contact Us</a
                             >
                           </li>
                         </ul>
                       </li>
                       <li>
-                        <a
-                          href="http://unopengis.org/unopengis/what/what00.php"
-                          data-fullname=""
-                          >What We Do</a
-                        >
+                        <a href="Whatwedo.html" data-fullname="">What We Do</a>
                         <ul class="depth02" style="">
                           <li>
                             <a
-                              href="http://unopengis.org/unopengis/what/what01.php"
+                              href="DWG1.html"
                               data-fullname="DWG 1: Hybrid GIS Platform"
                               >DWG 1: Hybrid GIS Platform</a
                             >
                           </li>
                           <li>
-                            <a
-                              href="http://unopengis.org/unopengis/what/what02.php"
-                              data-fullname=""
+                            <a href="DWG2.html" data-fullname=""
                               >DWG 2: Capacity Building</a
                             >
                           </li>
                           <li>
                             <a
-                              href="http://unopengis.org/unopengis/what/what03.php"
+                              href="DWG5.html"
                               data-fullname="DWG 5: GEOAI and Geo-Analytics"
                               >DWG 5: GEOAI &amp; Analytics</a
                             >
                           </li>
                           <li>
                             <a
-                              href="http://unopengis.org/unopengis/what/what04.php"
+                              href="DWG6.html"
                               data-fullname="DWG 6: OpenDroneMap and 3D"
                               >DWG 6: OpenDroneMap &amp; 3D</a
                             >
                           </li>
                           <li>
-                            <a
-                              href="http://unopengis.org/unopengis/what/what05.php"
-                              data-fullname=""
+                            <a href="DWG7.html" data-fullname=""
                               >DWG 7: Smart Maps</a
                             >
                           </li>
                         </ul>
                       </li>
                       <li>
-                        <a
-                          href="http://unopengis.org/unopengis/best/best01.php"
-                          data-fullname=""
-                          >Best Practices</a
-                        >
+                        <a href="BP_.html" data-fullname="">Best Practices</a>
                       </li>
                       <li>
-                        <a
-                          href="http://unopengis.org/unopengis/resources/resources00.php"
-                          data-fullname=""
-                          class=""
+                        <a href="resources.html" data-fullname="" class=""
                           >Resources</a
                         >
                         <ul
@@ -682,7 +651,8 @@
                           >Call for Participation</a
                         >
                       </li>
-                      <li style="display: none">
+                      <!-- comement out becasue of display: none -->
+                      <!-- <li style="display: none">
                         <a
                           href="http://unopengis.org/unopengis/member/login.php"
                           >Members</a
@@ -726,14 +696,14 @@
                             >
                           </li>
                         </ul>
-                      </li>
+                      </li> -->
                     </ul>
                   </article>
                 </article>
               </article>
               <article class="m-head-in mV posR">
                 <article class="m-head-top">
-                  <a href="http://unopengis.org/unopengis/main/main.php"
+                  <a href="index.html"
                     ><img
                       src="./Overvierw_files/logo.png"
                       alt="UN Open GIS 로고"
@@ -748,7 +718,7 @@
                       />
                     </a>
                   </article>
-                  <article class="right">
+                  <!-- <article class="right">
                     <a href="http://unopengis.org/unopengis/main/main.php"
                       >HOME</a
                     >
@@ -760,15 +730,13 @@
                     <a href="http://unopengis.org/unopengis/member/mypage.php"
                       >MYPAGE</a
                     >
-                  </article>
+                  </article> -->
                 </article>
                 <article class="m-depth">
                   <article class="m-depth-in clear">
                     <ul class="m-depth01" style="height: 1989px">
                       <li>
-                        <a href="http://unopengis.org/unopengis/main/main.php"
-                          >Home</a
-                        >
+                        <a href="index.html">Home</a>
                       </li>
                       <li>
                         <a href="javascript:void(0);" data-fullname=""
@@ -776,44 +744,30 @@
                         >
                         <ul class="m-depth02">
                           <li>
-                            <a
-                              href="http://unopengis.org/unopengis/about/about01.php"
-                              data-fullname=""
+                            <a href="Overvierw.html" data-fullname=""
                               >Overview</a
                             >
                           </li>
                           <li>
-                            <a
-                              href="http://unopengis.org/unopengis/about/about01_01.php"
-                              data-fullname=""
+                            <a href="1572933278-2.pdf" data-fullname=""
                               >About Us</a
                             >
                           </li>
                           <li>
-                            <a
-                              href="http://unopengis.org/unopengis/about/about01_02.php"
-                              data-fullname=""
+                            <a href="Governance.html" data-fullname=""
                               >Governance Structure</a
                             >
                           </li>
                           <li>
-                            <a
-                              href="http://unopengis.org/unopengis/about/about05.php"
-                              data-fullname=""
-                              >Members</a
-                            >
+                            <a href="members.html" data-fullname="">Members</a>
                           </li>
                           <li>
-                            <a
-                              href="http://unopengis.org/unopengis/about/about01_03.php"
-                              data-fullname=""
+                            <a href="Overvierw.html#about01_03" data-fullname=""
                               >CI</a
                             >
                           </li>
                           <li>
-                            <a
-                              href="http://unopengis.org/unopengis/about/about04.php"
-                              data-fullname=""
+                            <a href="contact.html" data-fullname=""
                               >Contact Us</a
                             >
                           </li>
@@ -825,55 +779,45 @@
                         >
                         <ul class="m-depth02">
                           <li>
-                            <a
-                              href="http://unopengis.org/unopengis/what/what00.php"
-                              data-fullname=""
+                            <a href="Whatwedo.html" data-fullname=""
                               >What We Do</a
                             >
                           </li>
                           <li>
                             <a
-                              href="http://unopengis.org/unopengis/what/what01.php"
+                              href="DWG1.html"
                               data-fullname="DWG 1: Hybrid GIS Platform"
                               >DWG 1: Hybrid GIS Platform</a
                             >
                           </li>
                           <li>
-                            <a
-                              href="http://unopengis.org/unopengis/what/what02.php"
-                              data-fullname=""
+                            <a href="DWG2.html" data-fullname=""
                               >DWG 2: Capacity Building</a
                             >
                           </li>
                           <li>
                             <a
-                              href="http://unopengis.org/unopengis/what/what03.php"
+                              href="DWG5.html"
                               data-fullname="DWG 5: GEOAI and Geo-Analytics"
                               >DWG 5: GEOAI &amp; Analytics</a
                             >
                           </li>
                           <li>
                             <a
-                              href="http://unopengis.org/unopengis/what/what04.php"
+                              href="DWG6.html"
                               data-fullname="DWG 6: OpenDroneMap and 3D"
                               >DWG 6: OpenDroneMap &amp; 3D</a
                             >
                           </li>
                           <li>
-                            <a
-                              href="http://unopengis.org/unopengis/what/what05.php"
-                              data-fullname=""
+                            <a href="DWG7.html" data-fullname=""
                               >DWG 7: Smart Maps</a
                             >
                           </li>
                         </ul>
                       </li>
                       <li>
-                        <a
-                          href="http://unopengis.org/unopengis/best/best01.php"
-                          data-fullname=""
-                          >Best Practices</a
-                        >
+                        <a href="BP_.html" data-fullname="">Best Practices</a>
                       </li>
                       <li>
                         <a href="javascript:void(0);" data-fullname=""
@@ -881,9 +825,7 @@
                         >
                         <ul class="m-depth02">
                           <li>
-                            <a
-                              href="http://unopengis.org/unopengis/resources/resources00.php"
-                              data-fullname=""
+                            <a href="resources.html" data-fullname=""
                               >Resources</a
                             >
                           </li>
@@ -966,7 +908,8 @@
                           >Call for Participation</a
                         >
                       </li>
-                      <li style="display: none">
+                      <!-- comement out becasue of display: none -->
+                      <!-- <li style="display: none">
                         <a href="javascript:;">Members</a>
                         <ul class="m-depth02">
                           <li>
@@ -1006,7 +949,7 @@
                             >
                           </li>
                         </ul>
-                      </li>
+                      </li> -->
                     </ul>
                     <article class="m-right-bg posR" style="height: 1989px">
                       <a href="javascript:;" class="m-depth-close"
@@ -1026,7 +969,7 @@
         <div class="reset">
           <article class="sub-common w1140">
             <article class="sub-nav">
-              <a href="http://unopengis.org/unopengis/main/main.php"
+              <a href="index.html"
                 ><img src="./Overvierw_files/sub-nav-home.png" alt="홈 아이콘"
               /></a>
               <u
@@ -1122,10 +1065,7 @@ $(window).load(function(){
         <article class="about01-wrap">
           <article class="about01-con w1140">
             <article class="about01-in clear">
-              <a
-                href="http://unopengis.org/unopengis/about/about01_01.php"
-                class="left"
-              >
+              <a href="1572933278-2.pdf" class="left">
                 <article class="img">
                   <img
                     src="./Overvierw_files/1583478099-1.png"
@@ -1139,14 +1079,10 @@ $(window).load(function(){
               </a>
               <article class="right">
                 <p>
-                  <a href="http://unopengis.org/unopengis/about/about01_01.php"
-                    >About UN Open GIS Initiative</a
-                  >
+                  <a href="1572933278-2.pdf">About UN Open GIS Initiative</a>
                 </p>
                 <span
-                  ><a
-                    href="http://unopengis.org/unopengis/about/about01_01.php"
-                    style="margin-right: 1em"
+                  ><a href="1572933278-2.pdf" style="margin-right: 1em"
                     >Who runs?&nbsp;&nbsp;The UN Open GIS Initiative&nbsp;is an
                     ongoing Partnership Initiative for Technology in
                     Peacekeeping of United Nations Department of Operational
@@ -1158,7 +1094,7 @@ $(window).load(function(){
                     Initiative aims&nbsp;to identify and develop an Open
                     Source…</a
                   ><a
-                    href="http://unopengis.org/unopengis/about/about01_01.php"
+                    href="1572933278-2.pdf"
                     style="
                       font-size: 11px;
                       line-height: 1;
@@ -1179,9 +1115,7 @@ $(window).load(function(){
                         vertical-align: top;
                       " /></a></span
                 ><br />
-                <a
-                  href="http://unopengis.org/sboard/data/frm/original/1572933278-2.pdf"
-                  download=""
+                <a href="1572933278-2.pdf" download=""
                   >TOR(Terms of Reference)</a
                 >
               </article>
@@ -1201,10 +1135,7 @@ $(window).load(function(){
             </article>
 
             <article class="about01-in clear">
-              <a
-                href="http://unopengis.org/unopengis/about/about01_02.php"
-                class="left"
-              >
+              <a href="Governance.html" class="left">
                 <article class="img">
                   <img
                     src="./Overvierw_files/1711562820-1.png"
@@ -1219,14 +1150,10 @@ $(window).load(function(){
               </a>
               <article class="right">
                 <p>
-                  <a href="http://unopengis.org/unopengis/about/about01_02.php"
-                    >Governance Structure</a
-                  >
+                  <a href="Governance.html">Governance Structure</a>
                 </p>
                 <span
-                  ><a
-                    href="http://unopengis.org/unopengis/about/about01_02.php"
-                    style="margin-right: 1em"
+                  ><a href="Governance.html" style="margin-right: 1em"
                     >The UN Open GIS Initiative's governance structure comprises
                     a Strategic Board, Co-Chairs, a Secretariat, and Domain
                     Working Groups organized as
@@ -1238,7 +1165,7 @@ $(window).load(function(){
                     operations:§&nbsp; &nbsp;Austria: Institute for Military
                     Geography§&nbsp; &nbsp;Germany:…</a
                   ><a
-                    href="http://unopengis.org/unopengis/about/about01_02.php"
+                    href="Governance.html"
                     style="
                       font-size: 11px;
                       line-height: 1;
@@ -1273,10 +1200,7 @@ $(window).load(function(){
             </article>
 
             <article class="about01-in clear">
-              <a
-                href="http://unopengis.org/unopengis/about/about01_03.php"
-                class="left"
-              >
+              <a href="1577437455-2.ai" class="left">
                 <article class="img">
                   <img
                     src="./Overvierw_files/1572933328-1.jpg"
@@ -1286,14 +1210,10 @@ $(window).load(function(){
               </a>
               <article id="about01_03" class="right">
                 <p>
-                  <a href="http://unopengis.org/unopengis/about/about01_03.php"
-                    >CI</a
-                  >
+                  <a href="1577437455-2.ai">CI</a>
                 </p>
                 <span
-                  ><a
-                    href="http://unopengis.org/unopengis/about/about01_03.php"
-                    style="margin-right: 1em"
+                  ><a href="1577437455-2.ai" style="margin-right: 1em"
                     >Download UN Open GIS Initiative CI: .pdf
                     file&nbsp;|&nbsp;.ai fileThe CI of UN Open GIS Initiative
                     was created through the "UN Open GIS Logo Contest" [1]
@@ -1303,8 +1223,9 @@ $(window).load(function(){
                     submissions.Figure 1.&nbsp;52 Submissions for CI of UN Open
                     GIS InitiativeOSGeo has been involved in the UN Open GIS
                     initiative through the&nbsp;OSGeo&nbsp;United Nations…</a
-                  ><a
-                    href="http://unopengis.org/unopengis/about/about01_03.php"
+                  >
+                  <!-- <a
+                    href="1577437455-2.ai"
                     style="
                       font-size: 11px;
                       line-height: 1;
@@ -1323,18 +1244,12 @@ $(window).load(function(){
                         margin: 2px 0 0 5px;
                         display: inline-block;
                         vertical-align: top;
-                      " /></a></span
+                      " /></a> --> </span
                 ><br />
-                <a
-                  href="http://unopengis.org/sboard/data/frm/original/1577437455-2.ai"
-                  download=""
-                  class="ci ci_ai"
+                <a href="1577437455-2.ai" download="" class="ci ci_ai"
                   >CI(AI)</a
                 >
-                <a
-                  href="http://unopengis.org/sboard/data/frm/original/1577437455-3.pdf"
-                  download=""
-                  class="ci ci_pdf"
+                <a href="1577437455-3.pdf" download="" class="ci ci_pdf"
                   >CI(PDF)</a
                 >
               </article>
@@ -1408,7 +1323,8 @@ $(window).load(function(){
                         display: block;
                       "
                       ><b>E-mail :</b></span
-                    ><a
+                    >
+                    <a
                       href="mailto:UNOpenGIS@krihs.re.kr"
                       style="
                         text-decoration-line: none;
@@ -1474,7 +1390,7 @@ $(window).load(function(){
                           float: left;
                           display: block;
                         "
-                        >https://twitter.com/UNopenGIS</a
+                        >https://x.com/UNopenGIS</a
                       ></span
                     >
                   </li>
@@ -1516,9 +1432,7 @@ $(window).load(function(){
           <article class="foot-wrap">
             <article class="foot-con w1140">
               <article class="foot-nav">
-                <a href="http://unopengis.org/unopengis/about/about04.php"
-                  >CONTACT</a
-                >
+                <a href="contact.html">CONTACT</a>
                 <span>·</span>
                 <a href="http://unopengis.org/unopengis/member/copyright.php"
                   >COPYRIGHT</a
@@ -1556,8 +1470,7 @@ $(window).load(function(){
               <article class="foot-adr">
                 <p>
                   UN Open GIS Initiative<span>|</span><br class="m-block" />ADD
-                  : 760 United Nations Plaza Manhattan, New York City, United
-                  States
+                  : 304E 45th Street, New York City, United States
                 </p>
                 <p>
                   UN Open GIS Secretariat Office<span>|</span
