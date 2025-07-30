@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>UN Open GIS</title>
+    <meta name="author" content="UN Open GIS" />
+    <meta
+      name="description"
+      content="The official site for the UN Open GIS Initiative."
+    />
+    <!-- reset default CSS -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <script defer src="script.js"></script>
+  </head>
+
+  <body>
+    <div id="header"></div>
+
+    <section class="wrapper">
+      <article class="content-main">
+        <article class="sub-nav">
+          <a href="index.html"
+            ><img src="./Overview_files/sub-nav-home.png" alt="home-icon"
+          /></a>
+          <u
+            ><img src="./Overview_files/sub-nav-arrow.png" alt="arrow-icon"
+          /></u>
+          <span>Best Practices</span>
+        </article>
+        <article class="sub-title">
+          <p>Best Practices</p>
+        </article>
+        <div class="gray-bar"></div>
+        <table class="no-border">
+          <tr>
+            <th>Subject</th>
+            <td>
+              [Best Practice] Mapping Refugee Settlements by using
+              PulseSatellite
+            </td>
+          </tr>
+          <tr>
+            <th>Name</th>
+            <td>Secretariat</td>
+          </tr>
+          <tr>
+            <th>Date</th>
+            <td>2020-02-12</td>
+          </tr>
+          <tr>
+            <th>Views</th>
+            <td>2,722</td>
+          </tr>
+        </table>
+        <div class="gray-bar"></div>
+
+        <section class="underline">
+          <div class="bp1-content">
+            <p class="note">
+              <img src="./BP_1_files/202002121352284824.jpg" alt="BP_1: pic" />
+              <span class="caption"
+                >Figure 1. Refugee Camp mapping using PulseSatellite</span
+              >
+            </p>
+            <p>
+              Counting and classifying structures in a refugee settlement is a
+              common analysis task for humanitarian agencies. In practice, this
+              is currently manually done by human expert analysts using
+              satellite imagery. A single settlement may have tens of thousands
+              of structures, and identifying each of them can take several days.
+              For camp mapping, PulseSatellite uses a Mask R-CNN model (He et
+              al. 2017) trained on images from 12 settlements, where the image
+              of each has been split into 300x300 pixel tiles and annotated by
+              human experts. Once the model has been run on an unseen camp, the
+              analyst can inspect the result in the tool and correct the outputs
+              on a subset of tiles. An adaptation stage can then be performed to
+              fine-tune the model to the unseen image and increase performance.
+              In recent independent tests camp completion rates increased from
+              77.3% to 94.7% after adaptation, with a final user accuracy of
+              94.4% -in line with humanitarian performance requirements
+              described in (Quinn et al. 2018).
+            </p>
+          </div>
+
+          <div class="bp1-content">
+            <p class="note">
+              <img
+                src="./BP_1_files/Uploadify_202002121349058190.jpg"
+                alt="BP_1_2: pic "
+              />
+              <span class="caption">
+                Figure2. PulseSatellite user-interface showing a hierarchy of
+                learning models
+              </span>
+            </p>
+            <p>
+              PulseSatellite is a distributed cloud application, currently
+              running on Amazon Web Services (AWS). The web-based user interface
+              (UI) is written in JavaScript+HTML, and the web server, which
+              communicates with the UI via HTTP and WS protocols, is written in
+              NodeJS. The database is managed using PostgreSQL with PostGIS
+              extension and is currently also used as a message streaming
+              service for Pub/Sub messaging between the web, GPU and tiling
+              servers. All backend files are generated and stored on a Amazon
+              Elastic File System (EFS). Multiple GPU servers can run ML
+              processes across a range of frameworks including PyTorch,
+              TensorFlow and Keras. GIS processes, including the tiling servers,
+              use OSGeo libraries and programs, most notably GDAL. All used
+              software is open source.
+            </p>
+            <p class="note">
+              * Note: The WG5 Best Practice "Mapping Refugee Settlements by
+              using PulseSatellite" has extracted from a publication of
+              <a href="https://arxiv.org/pdf/2001.10685" target="_blank"
+                >Tomaz Logar et al. 2020</a
+              >.
+            </p>
+          </div>
+        </section>
+      </article>
+    </section>
+    <div class="bar"></div>
+
+    <div id="footer"></div>
+  </body>
+</html>

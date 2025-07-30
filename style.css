@@ -1,0 +1,644 @@
+@charset "UTF-8";
+
+/* --------------------------------------
+common style
+----------------------------------------- */
+html {
+  font-size: 100%;
+  font-family: 'Roboto', sans-serif;
+}
+
+a {
+  text-decoration: none;
+}
+
+img {
+  max-width: 100%;
+}
+
+p {
+  font-size: 16px;
+  line-height: 1.7;
+}
+
+.note {
+  font-size: 14px;
+}
+
+.caption {
+  display: block;
+  line-height: 1.5;
+}
+
+li {
+  line-height: 1.7;
+}
+
+.wrapper {
+  max-width: 1140px;
+  margin: 0 auto;
+  padding: 0 4%;
+}
+
+.content-main {
+  margin: 30px auto;
+  width: 100%;
+}
+
+.sub-nav a {
+  width: 13px;
+  height: 12px;
+  display: inline-block;
+  vertical-align: top;
+}
+
+.sub-nav a img {
+  width: 100%;
+  display: block;
+}
+
+.sub-nav u {
+  margin: 3px 15px 0;
+  width: 5px;
+  height: 9px;
+  display: inline-block;
+  vertical-align: top;
+  text-decoration: none;
+}
+
+.sub-nav u img {
+  width: 100%;
+  display: block;
+}
+
+.sub-nav span {
+  font-size: 13px;
+  line-height: 12px;
+  letter-spacing: 0;
+  color: #666;
+  font-weight: 300;
+  display: inline-block;
+  vertical-align: top;
+}
+
+.sub-title {
+  padding-bottom: 16px;
+  margin: 24px 0 50px;
+  box-sizing: border-box;
+  border-bottom: 1px solid #ddd;
+}
+
+.sub-title p {
+  font-size: 35px;
+  line-height: 1;
+  letter-spacing: 0;
+  margin: 20px 0;
+  font-weight: bold;
+  color: #00aeef;
+}
+
+.blue-bar {
+  border-bottom: 1px solid #00aeef;
+}
+
+.gray-bar {
+  border-bottom: 1px solid #ddd;
+  margin-bottom: 30px;
+}
+
+.underline a {
+  text-decoration: underline;
+}
+/* -----------------------------------
+header part
+-------------------------------------- */
+.head-t-nav-color {
+  background: #f2f2f2;
+  border-bottom: 5px solid #00aeef;
+}
+
+.head-t-nav {
+  padding: 10px 4%;
+}
+
+.head-t-in a {
+  font-size: 11px;
+  line-height: 17px;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  color: #000;
+  display: flex;
+}
+
+.head-t-in a::before {
+  font-family: FontAwesome;
+  color: black;
+  content: '\f015';
+  font-size: 19.46px;
+  line-height: 0.9;
+  margin-right: 8.4px;
+  float: left;
+}
+
+.head-logo {
+  padding: 10px 4%;
+}
+
+.bar {
+  border-bottom: 1px solid #ddd;
+}
+
+.nav {
+  display: flex;
+  justify-content: space-around;
+  /* align-items: flex-start; */
+  margin: 0;
+  padding-inline-start: 0;
+  list-style: none;
+  /* background-color: crimson; */
+}
+
+.nav > li {
+  position: relative;
+  width: 100%;
+  /* padding-right: 100px; */
+  /* background-color: chocolate; */
+}
+
+.nav > li > a {
+  text-align: center;
+  display: inline-block;
+  line-height: 40px;
+  font-size: 14px;
+  font-weight: 600;
+  width: 100%;
+  /* padding: 0 50px; */
+  color: #000;
+  /* background-color: beige; */
+}
+
+.nav > li > a:hover {
+  color: #00aeef;
+}
+
+.submenu {
+  position: absolute;
+  /* top: 100%; */
+  left: 0;
+  right: 0;
+  background-color: #00aeef;
+  border-bottom: 1px solid #00aeef;
+  list-style: none;
+  padding: 10px 15px;
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease, opacity 0.3s ease;
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+}
+
+.nav > li:hover .submenu {
+  max-height: 500px;
+  opacity: 1;
+}
+
+.submenu li a {
+  font-size: 13px;
+  line-height: 35px;
+  color: #fff;
+  /* display: inline-block; */
+  /* border-bottom: 1px solid #00aeef; */
+}
+
+.submenu li a:hover {
+  border-bottom: 1px solid #fff;
+}
+
+/* -----------------------------------
+footer part
+-------------------------------------- */
+footer p {
+  font-size: 12px;
+  line-height: 15px;
+  color: #777;
+}
+
+/* ------------------------------------
+index.html
+-------------------------------------- */
+.main {
+  display: flex;
+  justify-content: space-between;
+  margin: 30px auto;
+  width: 100%;
+  gap: 50px;
+}
+
+/* slides part
+-------------------------------------- */
+.slider {
+  height: 550px;
+  width: 75%;
+  position: relative;
+
+  /* IN THE END */
+  overflow: hidden;
+}
+
+.slide {
+  position: absolute;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  /* THIS creates the animation! */
+  transition: transform 0.7s;
+}
+
+.slide img {
+  height: 470px;
+  width: auto;
+  object-fit: contain;
+  display: block;
+}
+
+.slide p {
+  text-align: center;
+}
+
+.slider__btn {
+  position: absolute;
+  top: 50%;
+  z-index: 10;
+
+  border: none;
+  /* background: rgba(255, 255, 255, 0.7); */
+  background: rgba(240, 240, 240, 0.7);
+  font-family: inherit;
+  color: #333;
+  border-radius: 50%;
+  height: 5.5rem;
+  width: 5.5rem;
+  font-size: 3.25rem;
+  cursor: pointer;
+  /* transform: translateY(-50%); */
+}
+
+.slider__btn--left {
+  left: 6%;
+  transform: translate(-50%, -50%);
+}
+
+.slider__btn--right {
+  right: 6%;
+  transform: translate(50%, -50%);
+}
+
+.dots {
+  position: absolute;
+  bottom: 0%;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+}
+
+.dots__dot {
+  border: none;
+  background-color: #b9b9b9;
+  opacity: 0.7;
+  height: 1rem;
+  width: 1rem;
+  border-radius: 50%;
+  margin-right: 1.75rem;
+  cursor: pointer;
+  transition: all 0.5s;
+
+  /* Only necessary when overlying images */
+  /* box-shadow: 0 0.6rem 1.5rem rgba(0, 0, 0, 0.7); */
+}
+
+.dots__dot--active {
+  /* background-color: #fff; */
+  background-color: #888;
+  opacity: 1;
+}
+
+/* aside part
+-------------------------------------- */
+aside {
+  width: 25%;
+}
+
+.focus h3 {
+  color: #00aeef;
+  margin-top: 0;
+  padding-bottom: 20px;
+  border-bottom: 2px solid #00aeef;
+}
+
+.focus-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.focus-content p {
+  margin-top: 3px;
+  margin-bottom: 30px;
+}
+
+/*-----------------------------------
+Overview.html
+/------------------------------------*/
+.overview-main-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.overview-content {
+  display: flex;
+  justify-content: space-around;
+  gap: 50px;
+  margin-bottom: 50px;
+}
+
+.overview-left {
+  width: 50%;
+}
+
+.overview-left img {
+  /* width: 100%; */
+  width: auto;
+  /* height: auto; */
+  height: 350px;
+  border: 1px solid #ccc;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.overview-right {
+  width: 50%;
+}
+
+.overview-right p {
+  margin: 30px 0;
+}
+
+.overview-link {
+  width: 280px;
+  height: 31px;
+  line-height: 31px;
+  border-radius: 5px;
+  background: #56c9f4;
+  color: #fff;
+  box-sizing: border-box;
+  display: block;
+  text-align: center;
+  font-weight: 550;
+}
+
+.ci {
+  width: 100px;
+  height: 31px;
+  line-height: 31px;
+  border-radius: 5px;
+  background: #56c9f4;
+  color: #fff;
+  box-sizing: border-box;
+  display: inline-block;
+  text-align: center;
+  font-weight: 550;
+  margin: 0 10px 0 0;
+}
+
+/*-----------------------------------
+Governance.html
+/------------------------------------*/
+
+.governance-content-top {
+  margin-bottom: 50px;
+}
+
+.governance-content-top img {
+  width: 100%;
+}
+
+.sentence {
+  margin: 50px 0;
+}
+
+.sentences h2 {
+  color: #00aeef;
+}
+
+/* .sentences p {
+  margin: 0 auto;
+} */
+
+.sentences ul {
+  list-style-type: square;
+  margin: 0 auto;
+}
+
+.sentences ul li::marker {
+  color: #00aeef;
+  font-size: 1.5em;
+}
+
+/*-----------------------------------
+members.html
+/------------------------------------*/
+.members-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  gap: 20px;
+  /* grid-template-columns: 1fr 1fr 1fr 1fr; */
+}
+
+.members-container img {
+  border: 1px solid #ccc;
+  height: 150px;
+}
+
+/*-----------------------------------
+What We Do(DWG all)
+/------------------------------------*/
+
+.dwg-content-top img {
+  width: 50%;
+  margin: 30px 0;
+}
+
+/*-----------------------------------
+DWG2.html
+/------------------------------------*/
+.dwg2-list a {
+  line-height: 1.7;
+}
+
+/*-----------------------------------
+DWG5.html
+/------------------------------------*/
+.dwg5-top {
+  display: flex;
+  justify-content: space-around;
+  gap: 30px;
+  margin-bottom: 50px;
+}
+
+.dwg5-left {
+  width: 63%;
+}
+
+.dwg5-left img {
+  margin: 50px 0;
+}
+
+.dwg5-right {
+  width: 37%;
+  background-color: #f0f0f0;
+  height: 300px;
+  padding: 0 10px;
+}
+
+ul.dash-list {
+  list-style: none;
+  padding-left: 20px;
+}
+
+ul.dash-list li {
+  position: relative;
+  padding-left: 1.2em; /* テキストをマーカーの右にずらす */
+  text-indent: 0; /* マーカー位置から始める */
+  line-height: 1.7;
+}
+
+ul.dash-list li::before {
+  content: '-';
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 1.2em;
+  display: inline-block;
+}
+
+/*-----------------------------------
+DWG6.html
+/------------------------------------*/
+.dwg6-content img {
+  width: 60%;
+  margin: 10px 0;
+}
+
+.dwg6-list {
+  list-style: none;
+  margin: 5px 0;
+}
+
+.dwg6-list a {
+  line-height: 1.7;
+}
+
+/*-----------------------------------
+DWG7.html
+/------------------------------------*/
+.dwg7-content img {
+  width: 100%;
+  margin: 30px 0;
+}
+
+/*-----------------------------------
+BP_.html
+/------------------------------------*/
+.bp-left {
+  width: 50%;
+}
+
+.bp-left img {
+  width: 100%;
+  height: auto;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.bp-right {
+  width: 50%;
+}
+
+.bp-right p {
+  margin: 30px 0;
+}
+
+.no-border,
+.no-border th,
+.no-border td {
+  border: none;
+  border-collapse: collapse;
+}
+
+.no-border td,
+.no-border th {
+  padding: 6px 12px;
+  text-align: left;
+}
+
+/*-----------------------------------
+BP_1.html
+/------------------------------------*/
+.bp1-content {
+  margin-bottom: 50px;
+}
+
+/*-----------------------------------
+BP_2.html
+/------------------------------------*/
+.bp2-content {
+  margin-bottom: 20px;
+}
+
+.bp2-img {
+  margin-bottom: 50px;
+}
+
+.bp2-content > ul {
+  margin-top: 0;
+}
+
+.bp2-content p {
+  margin: 3px 0px;
+}
+
+.bp2-nostyle-ul {
+  list-style: none;
+  padding-left: 1em; /* 左に少し余白を入れて見やすく */
+}
+
+.bp2-nostyle-ul li::before {
+  content: '-';
+  margin-right: 0.5em;
+  color: #333; /* 必要に応じて色指定 */
+}
+
+.bp2-references {
+  list-style: none;
+  margin-top: 0;
+}
+
+.bp2-references li {
+  line-height: 1.3;
+}
+
+/*-----------------------------------
+BP_3.html
+/------------------------------------*/
+.bp3-content {
+  margin-bottom: 50px;
+}
